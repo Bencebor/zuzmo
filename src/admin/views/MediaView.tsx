@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Trash2, Video, Image as ImageIcon, CheckCircle, X } from 'lucide-react';
+import { Plus, Trash2, Video, Image as ImageIcon, CheckCircle, X, Upload } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { MediaItem } from '../../types';
+import { formatImgUrl, handleImageError } from '../../utils/formatImage';
 
 export const MediaView: React.FC = () => {
   const { token } = useAuth();
   const [gallery, setGallery] = useState<MediaItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
 
   // New media modal
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,6 +25,45 @@ export const MediaView: React.FC = () => {
     type: 'image',
     thumbnail: ''
   });
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async () => {
+      const base64 = reader.result as string;
+      setUploading(true);
+      try {
+        const res = await fetch('/api/admin/upload', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            filename: file.name,
+            base64,
+            title: newItem.title || file.name.replace(/\.[^/.]+$/, ''),
+            category: newItem.category
+          })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setNewItem((prev) => ({
+            ...prev,
+            url: data.url,
+            title: prev.title || file.name.replace(/\.[^/.]+$/, '')
+          }));
+          fetchGallery();
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setUploading(false);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
 
   const fetchGallery = async () => {
     try {
@@ -111,9 +152,10 @@ export const MediaView: React.FC = () => {
           >
             <div className="relative aspect-[4/3] bg-stone-100 overflow-hidden">
               <img
-                src={item.type === 'video' ? item.thumbnail || item.url : item.url}
+                src={formatImgUrl(item.type === 'video' ? item.thumbnail || item.url : item.url)}
                 alt={item.title}
                 className="w-full h-full object-cover"
+                onError={(e) => handleImageError(e, 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80')}
               />
               <div className="absolute top-2 left-2 flex gap-1">
                 <span className="bg-black/60 backdrop-blur-sm text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
@@ -204,14 +246,40 @@ export const MediaView: React.FC = () => {
                 />
               </div>
 
+              {/* File upload option */}
+              {newItem.type === 'image' && (
+                <div className="p-3 bg-stone-50 border border-stone-200 rounded-xl">
+                  <label className="block text-xs font-bold text-[#1b4332] uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                    <Upload className="w-3.5 h-3.5 text-[#c5a880]" />
+                    <span>Fotó feltöltése közvetlenül eszközről</span>
+                  </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileUpload}
+                    className="w-full text-xs text-stone-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#1b4332] file:text-white hover:file:bg-[#2d6a4f] cursor-pointer"
+                  />
+                  {uploading && (
+                    <span className="text-[11px] text-[#c5a880] font-medium block mt-1 animate-pulse">
+                      ⏳ Kép feltöltése és feldolgozása folyamatban...
+                    </span>
+                  )}
+                  {newItem.url && newItem.url.startsWith('/uploads/') && (
+                    <span className="text-[11px] text-emerald-600 font-medium block mt-1">
+                      ✓ Kép sikeresen feltöltve a szerverre!
+                    </span>
+                  )}
+                </div>
+              )}
+
               <div>
                 <label className="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1">
-                  Média URL *
+                  Média URL {newItem.type === 'image' ? '(vagy a feltöltött fájl címe)' : '*'}
                 </label>
                 <input
-                  type="url"
+                  type="text"
                   required
-                  placeholder="https://images.unsplash.com/... vagy mp4 link"
+                  placeholder="https://... vagy a fenti feltöltéssel automatikus"
                   value={newItem.url}
                   onChange={(e) => setNewItem({ ...newItem, url: e.target.value })}
                   className="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs focus:outline-none"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { KeyRound, Trees, Coffee, ShieldCheck } from 'lucide-react';
 import { useSiteData } from '../context/SiteDataContext';
+import { formatImgUrl, handleImageError } from '../utils/formatImage';
 
 export const AboutSection: React.FC = () => {
   const { content } = useSiteData();
@@ -89,20 +90,22 @@ export const AboutSection: React.FC = () => {
               {/* Primary real exterior image */}
               <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] bg-stone-900">
                 <img
-                  src={about?.image1 || 'dc25c9c8-5452-4cf6-a901-9f26c6f8360d.jpeg'}
+                  src={formatImgUrl(about?.image1 || 'dc25c9c8-5452-4cf6-a901-9f26c6f8360d.jpeg')}
                   alt="Zuzmo Kabin Vendégház az erdő szélén"
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
+                  onError={(e) => handleImageError(e, 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80')}
                 />
               </div>
 
               {/* Floating secondary real interior image */}
               <div className="hidden sm:block absolute -bottom-8 -left-8 w-3/5 rounded-2xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] bg-stone-100">
                 <img
-                  src={about?.image2 || 'fda939cf-838f-4d9e-bbff-f558077614d3.jpeg'}
+                  src={formatImgUrl(about?.image2 || 'fda939cf-838f-4d9e-bbff-f558077614d3.jpeg')}
                   alt="Zuzmo Kabin nappali és terasz"
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
+                  onError={(e) => handleImageError(e, 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80')}
                 />
               </div>
 

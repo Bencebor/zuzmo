@@ -19,6 +19,17 @@ if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
+// Ensure public and uploads directories exist and are served statically
+const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
+if (!fs.existsSync(PUBLIC_DIR)) {
+  fs.mkdirSync(PUBLIC_DIR, { recursive: true });
+}
+const UPLOADS_DIR = path.join(PUBLIC_DIR, 'uploads');
+if (!fs.existsSync(UPLOADS_DIR)) {
+  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+}
+app.use(express.static(PUBLIC_DIR));
+
 // Password hashing helper
 function hashPassword(password: string, salt?: string): { hash: string; salt: string } {
   const actualSalt = salt || crypto.randomBytes(16).toString('hex');
@@ -445,7 +456,7 @@ function getInitialSeedData() {
     siteContent: {
       hero: {
         badge: '✨ Önálló Vendégház Nagymaroson, Akár 6 Fő Részére',
-        title: 'Zuzmo Kabin Vendégház – kikapcsolódás a Dunakanyar erdőszélén',
+        title: 'zuzmo kabin',
         subtitle: 'Fedezd fel a nyugalmat Nagymaroson, az erdő szélén található, önálló vendégházunkban! A Zuzmo Kabin ideális választás pároknak, családoknak és baráti társaságoknak, akár 6 fő részére.',
         paragraph2: 'Pihenj a privát pezsgőfürdőben, élvezd a kert nyugalmát, grillezz a szabadban, és töltődj fel a természet közelségében. A ház egész évben kényelmes kikapcsolódást kínál.',
         coverImage: 'dc25c9c8-5452-4cf6-a901-9f26c6f8360d.jpeg',
@@ -1279,6 +1290,48 @@ app.delete('/api/admin/gallery/:id', authMiddleware, (req: Request, res: Respons
   db.gallery = db.gallery.filter((g: any) => g.id !== id);
   saveDb(db);
   res.json({ success: true });
+});
+
+app.post('/api/admin/upload', authMiddleware, (req: Request, res: Response) => {
+  try {
+    const { filename, base64, title, category } = req.body;
+    if (!base64) {
+      res.status(400).json({ error: 'Nincs kép adat megadva' });
+      return;
+    }
+    const matches = base64.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+    let buffer: Buffer;
+    let ext = 'jpeg';
+    if (matches && matches.length === 3) {
+      const mime = matches[1];
+      if (mime.includes('png')) ext = 'png';
+      else if (mime.includes('webp')) ext = 'webp';
+      else if (mime.includes('jpeg') || mime.includes('jpg')) ext = 'jpeg';
+      buffer = Buffer.from(matches[2], 'base64');
+    } else {
+      buffer = Buffer.from(base64, 'base64');
+    }
+    const safeName = `zuzmo-${Date.now()}-${Math.random().toString(36).substring(2, 7)}.${ext}`;
+    fs.writeFileSync(path.join(UPLOADS_DIR, safeName), buffer);
+    const fileUrl = `/uploads/${safeName}`;
+
+    const db = loadDb();
+    const newItem = {
+      id: `med-${Date.now()}`,
+      title: title || filename || 'Feltöltött vendégház fotó',
+      url: fileUrl,
+      category: category || 'kulso',
+      type: 'image'
+    };
+    db.gallery = db.gallery || [];
+    db.gallery.unshift(newItem);
+    saveDb(db);
+
+    res.json({ success: true, url: fileUrl, item: newItem });
+  } catch (err: any) {
+    console.error('Upload error:', err);
+    res.status(500).json({ error: 'Feltöltési hiba történt' });
+  }
 });
 
 app.get('/api/admin/reviews', authMiddleware, (_req: Request, res: Response) => {

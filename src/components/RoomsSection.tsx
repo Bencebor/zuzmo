@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Users, Bed, Bath, Sparkles, Check, ArrowRight, Eye, X, Home, Trees, UtensilsCrossed } from 'lucide-react';
 import { useSiteData } from '../context/SiteDataContext';
 import { HouseSpace } from '../types';
+import { formatImgUrl, handleImageError } from '../utils/formatImage';
 
 export const RoomsSection: React.FC = () => {
   const { houseSpaces, rooms, openBookingModal } = useSiteData();
@@ -44,10 +45,11 @@ export const RoomsSection: React.FC = () => {
                 {/* Image Section with Thumbnails */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
                   <img
-                    src={currentImg}
+                    src={formatImgUrl(currentImg)}
                     alt={space.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
+                    onError={(e) => handleImageError(e, 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80')}
                   />
 
                   {/* Quick Detail View Button */}
@@ -171,10 +173,11 @@ export const RoomsSection: React.FC = () => {
           <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-stone-200">
             <div className="relative aspect-[16/9] overflow-hidden bg-stone-900">
               <img
-                src={detailModalSpace.images[0]}
+                src={formatImgUrl(detailModalSpace.images[0])}
                 alt={detailModalSpace.name}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
+                onError={(e) => handleImageError(e, 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80')}
               />
               <button
                 onClick={() => setDetailModalSpace(null)}
@@ -228,10 +231,11 @@ export const RoomsSection: React.FC = () => {
                     {detailModalSpace.images.map((img, i) => (
                       <div key={i} className="aspect-[4/3] rounded-xl overflow-hidden bg-stone-100">
                         <img
-                          src={img}
+                          src={formatImgUrl(img)}
                           alt="Fotó"
                           className="w-full h-full object-cover"
                           referrerPolicy="no-referrer"
+                          onError={(e) => handleImageError(e, 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80')}
                         />
                       </div>
                     ))}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
 import { useSiteData } from '../context/SiteDataContext';
 import { MediaItem } from '../types';
+import { formatImgUrl, handleImageError } from '../utils/formatImage';
 
 export const GallerySection: React.FC = () => {
   const { gallery } = useSiteData();
@@ -79,11 +80,12 @@ export const GallerySection: React.FC = () => {
               className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-200 shadow-md hover:shadow-xl cursor-pointer transition-all duration-300"
             >
               <img
-                src={photo.url}
+                src={formatImgUrl(photo.url)}
                 alt={photo.title}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 loading="lazy"
                 referrerPolicy="no-referrer"
+                onError={(e) => handleImageError(e, 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80')}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
                 <span className="text-[10px] font-semibold text-[#c5a880] uppercase tracking-wider">
@@ -125,10 +127,11 @@ export const GallerySection: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={filteredPhotos[lightboxIndex].url}
+              src={formatImgUrl(filteredPhotos[lightboxIndex].url)}
               alt={filteredPhotos[lightboxIndex].title}
               className="max-h-[75vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl"
               referrerPolicy="no-referrer"
+              onError={(e) => handleImageError(e, 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80')}
             />
             <div className="mt-4 text-center text-white">
               <p className="text-lg font-serif font-medium">{filteredPhotos[lightboxIndex].title}</p>

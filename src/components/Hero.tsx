@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar, Users, Star, Sparkles, Flame, ShieldCheck, ArrowRight, Heart } from 'lucide-react';
 import { useSiteData } from '../context/SiteDataContext';
+import { formatImgUrl, handleImageError } from '../utils/formatImage';
 
 export const Hero: React.FC = () => {
   const { content, openBookingModal } = useSiteData();
@@ -24,10 +25,11 @@ export const Hero: React.FC = () => {
       {/* Background Image with Dark Pine Tint Gradient */}
       <div className="absolute inset-0 z-0">
         <img
-          src={heroImage}
+          src={formatImgUrl(heroImage)}
           alt="Zuzmo Kabin Vendégház Nagymaros"
           className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-10000"
           referrerPolicy="no-referrer"
+          onError={(e) => handleImageError(e, 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=85')}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0f241a] via-[#0f241a]/65 to-[#0f241a]/45" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#0f241a]/30 to-[#0f241a]/80" />
@@ -41,8 +43,8 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-white font-bold tracking-tight max-w-4xl mx-auto leading-tight drop-shadow-md">
-          {content?.hero?.title || 'Zuzmo Kabin Vendégház – kikapcsolódás a Dunakanyar erdőszélén'}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-white font-bold tracking-tight max-w-4xl mx-auto leading-tight drop-shadow-md">
+          {content?.hero?.title || 'zuzmo kabin'}
         </h1>
 
         {/* Subtitle Paragraphs */}
