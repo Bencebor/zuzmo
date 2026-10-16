@@ -1,6 +1,6 @@
 {
-  "name": "Zuzmara Vendégház",
-  "description": "Prémium erdei vendégház és wellness szálláshely – exkluzív pihenés, online foglalás, jakuzzi, szauna és természetközeli élmények.",
+  "name": "Zuzmo Kabin Vendégház",
+  "description": "Zuzmo Kabin Vendégház – önálló prémium erdei vendégház Nagymaroson, a Dunakanyarban privát pezsgőfürdővel és kerthelyiséggel, akár 6 fő részére.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

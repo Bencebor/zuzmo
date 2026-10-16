@@ -255,7 +255,7 @@ export const BookingModal: React.FC = () => {
         <div className="bg-[#0f241a] text-white p-5 sm:p-6 flex items-center justify-between border-b border-[#2d6a4f]/40 relative">
           <div>
             <span className="text-[11px] font-mono tracking-widest text-[#c5a880] uppercase">
-              Zuzmara Vendégház • Online Foglalás
+              Zuzmo Kabin Vendégház • Online Foglalás
             </span>
             <h2 className="text-xl sm:text-2xl font-serif font-bold text-white mt-0.5">
               {step === 5 ? '🎉 Foglalás Megerősítve!' : 'Közvetlen Szállásfoglalás'}
@@ -708,13 +708,13 @@ export const BookingModal: React.FC = () => {
 
                 {paymentMethod === 'szep_card' && (
                   <div className="p-3 bg-stone-50 rounded-xl text-xs text-stone-600">
-                    🏨 <strong>{szepBank} SZÉP Kártya</strong> azonosító: <strong>ZUZMARA-OTP-99214</strong>. A gombra kattintva a zárolás szimulációja lefut és a foglalás megerősítést nyer.
+                    🏨 <strong>{szepBank} SZÉP Kártya</strong> azonosító: <strong>ZUZMO-OTP-99214</strong>. A gombra kattintva a zárolás szimulációja lefut és a foglalás megerősítést nyer.
                   </div>
                 )}
 
                 {paymentMethod === 'bank_transfer' && (
                   <div className="p-3 bg-stone-50 rounded-xl text-xs text-stone-700 space-y-1">
-                    <div><strong>Kedvezményezett:</strong> Zuzmara Vendégház Kft.</div>
+                    <div><strong>Kedvezményezett:</strong> Zuzmo Kabin Vendégház</div>
                     <div><strong>Bankszámlaszám:</strong> 11773000-12345678-00000000 (OTP Bank)</div>
                     <div><strong>Közlemény rovatba:</strong> {createdBooking.id}</div>
                   </div>
@@ -745,7 +745,7 @@ export const BookingModal: React.FC = () => {
               {/* Printable Voucher Slip */}
               <div className="bg-[#f4efea] p-6 rounded-3xl border border-stone-200 text-left max-w-lg mx-auto shadow-inner space-y-3 text-sm">
                 <div className="flex justify-between items-center pb-3 border-b border-stone-300">
-                  <span className="font-serif font-bold text-lg text-[#0f241a]">Zuzmara Vendégház</span>
+                  <span className="font-serif font-bold text-lg text-[#0f241a]">Zuzmo Kabin Vendégház</span>
                   <span className="font-mono text-xs bg-[#1b4332] text-white px-2.5 py-1 rounded-md">
                     {createdBooking.id}
                   </span>

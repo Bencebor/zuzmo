@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { SiteContent, Room, ServiceItem, MediaItem, Review, FaqItem } from '../types';
+import { SiteContent, Room, HouseSpace, ServiceItem, MediaItem, Review, FaqItem } from '../types';
 
 interface SiteDataContextType {
   content: SiteContent | null;
   rooms: Room[];
+  houseSpaces: HouseSpace[];
   services: ServiceItem[];
   gallery: MediaItem[];
   reviews: Review[];
@@ -23,6 +24,7 @@ const SiteDataContext = createContext<SiteDataContextType | undefined>(undefined
 export const SiteDataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [content, setContent] = useState<SiteContent | null>(null);
   const [rooms, setRooms] = useState<Room[]>([]);
+  const [houseSpaces, setHouseSpaces] = useState<HouseSpace[]>([]);
   const [services, setServices] = useState<ServiceItem[]>([]);
   const [gallery, setGallery] = useState<MediaItem[]>([]);
   const [reviews, setReviews] = useState<Review[]>([]);
@@ -40,6 +42,7 @@ export const SiteDataProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         const data = await res.json();
         setContent(data.content);
         setRooms(data.rooms || []);
+        setHouseSpaces(data.houseSpaces || []);
         setServices(data.services || []);
         setGallery(data.gallery || []);
         setReviews(data.reviews || []);
@@ -58,7 +61,9 @@ export const SiteDataProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, [fetchSiteData]);
 
   const openBookingModal = (roomId?: string) => {
-    if (roomId) setSelectedRoomId(roomId);
+    if (roomId) {
+      setSelectedRoomId(roomId);
+    }
     setIsBookingModalOpen(true);
   };
 
@@ -71,6 +76,7 @@ export const SiteDataProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       value={{
         content,
         rooms,
+        houseSpaces,
         services,
         gallery,
         reviews,

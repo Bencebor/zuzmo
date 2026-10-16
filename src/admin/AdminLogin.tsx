@@ -107,7 +107,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onBackToSite }) => {
             <Lock className="w-8 h-8" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-wide">
-            Zuzmara Vendégház
+            Zuzmo Kabin Vendégház
           </h2>
           <p className="mt-1 text-xs sm:text-sm text-[#c5a880] font-sans uppercase tracking-widest">
             Központi Adminisztrációs Rendszer

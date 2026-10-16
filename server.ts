@@ -31,10 +31,10 @@ function verifyPassword(password: string, hash: string, salt: string): boolean {
   return crypto.timingSafeEqual(Buffer.from(hash, 'hex'), Buffer.from(testHash, 'hex'));
 }
 
-// Initial seed data with authentic Hungarian guesthouse details
+// Initial seed data for single standalone house: Zuzmo Kabin Vendégház
 function getInitialSeedData() {
   const defaultAdminSalt = crypto.randomBytes(16).toString('hex');
-  const defaultAdminHash = crypto.scryptSync('Zuzmara2026!', defaultAdminSalt, 64).toString('hex');
+  const defaultAdminHash = crypto.scryptSync('Zuzmo2026!', defaultAdminSalt, 64).toString('hex');
 
   const editorSalt = crypto.randomBytes(16).toString('hex');
   const editorHash = crypto.scryptSync('Editor2026!', editorSalt, 64).toString('hex');
@@ -44,8 +44,8 @@ function getInitialSeedData() {
       {
         id: 'usr_owner_1',
         username: 'admin',
-        email: 'hello@zuzmaravendeghaz.hu',
-        name: 'Kovács Balázs (Tulajdonos)',
+        email: 'hello@zuzmokabin.hu',
+        name: 'Zuzmo Kabin Házigazda',
         role: 'owner',
         hash: defaultAdminHash,
         salt: defaultAdminSalt,
@@ -54,468 +54,512 @@ function getInitialSeedData() {
       {
         id: 'usr_editor_1',
         username: 'szerkeszto',
-        email: 'szerkeszto@zuzmaravendeghaz.hu',
-        name: 'Varga Dóra (Tartalomfelelős)',
+        email: 'szerkeszto@zuzmokabin.hu',
+        name: 'Tartalomszerkesztő',
         role: 'editor',
         hash: editorHash,
         salt: editorSalt,
         createdAt: '2026-02-01T12:00:00Z',
       },
     ],
+    // Single standalone house
     rooms: [
       {
-        id: 'room-1',
-        name: 'Erdőzsongás Prémium Faház',
-        tagline: 'Közvetlen erdőszéli luxusház privát dézsával és panoráma szaunával',
-        description: 'Tágas, skandináv stílusú prémium faház hatalmas üvegfalakkal, amelyekből a fenyves erdőre nyílik kilátás. Privát fatüzelésű jakuzzi a teraszon, belső öntöttvas kandalló és teljes kényelem.',
-        capacity: 4,
+        id: 'zuzmo-kabin',
+        name: 'Zuzmo Kabin Vendégház',
+        tagline: 'Teljes önálló erdei vendégház Nagymaroson privát pezsgőfürdővel',
+        description: 'Önálló vendégház és hozzá tartozó kerthelyiség a Dunakanyarban, Nagymaros erdőszélén. Amerikai konyhás nappali két kényelmes kihúzható kanapéval, meleg vizes fürdőszoba és emeleti két hálószoba (franciaágyas és két külön ágyas). Akár 6 vendég számára ideális.',
+        capacity: 6,
         bedrooms: 2,
         bathrooms: 1,
-        sizeM2: 68,
-        basePricePerNight: 58000,
-        weekendPricePerNight: 68000,
+        sizeM2: 75,
+        basePricePerNight: 52000,
+        weekendPricePerNight: 62000,
         minNights: 2,
         images: [
-          'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80',
-          'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
-          'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
-          'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'
+          'dc25c9c8-5452-4cf6-a901-9f26c6f8360d.jpeg',
+          'fda939cf-838f-4d9e-bbff-f558077614d3.jpeg',
+          'fff9d7b5-5d45-4249-8ebe-762d16004806.jpeg',
+          '981271ac-3a7d-43cd-8e5b-ac65dab38cca.jpeg',
+          'd9175ad3-682d-4cb5-b1ac-bdc3b9a0b562.jpeg',
+          '465f8586-0028-4c72-8c8b-3dda5dfcd6a1.jpeg',
+          'da3d2dd2-2f92-4043-9a84-e4b1c138dabf.jpeg'
         ],
         amenities: [
-          'Privát melegvizes dézsa',
-          'Fatüzelésű kandalló',
-          'Panorámás terasz napozóágyakkal',
-          'Nespresso kávégép & tea válogatás',
+          'Privát pezsgőfürdő (egész évben)',
           'Teljesen felszerelt konyha',
-          'Starlink High-Speed Wi-Fi',
-          'Padlófűtés & hűtő-fűtő klíma',
-          'Prémium bio kozmetikumok'
+          'Wi-Fi',
+          'Ingyenes parkolás a helyszínen',
+          'Kisállatbarát szálláshely',
+          'Légkondicionálás & fűtés',
+          'Saját kerthelyiség & grill',
+          'Csepegtetős kávéfőző'
         ],
         featured: true,
-        active: true
-      },
-      {
-        id: 'room-2',
-        name: 'Zuzmara Panoráma Lodge',
-        tagline: 'Exkluzív páros kuckó beépített hidromasszázs káddal és erdőpanorámával',
-        description: 'Kifejezetten pároknak megálmodott romantikus menedék. Az ágyból és a szabadon álló dizájn kádból is a csillagos égboltot és a lombok lágy ringását élvezhetitek.',
-        capacity: 2,
-        bedrooms: 1,
-        bathrooms: 1,
-        sizeM2: 45,
-        basePricePerNight: 46000,
-        weekendPricePerNight: 54000,
-        minNights: 2,
-        images: [
-          'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
-          'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80',
-          'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80'
-        ],
-        amenities: [
-          'Szabadon álló panoráma kád',
-          'King-size prémium matrac',
-          'Elektromos látványkandalló',
-          'Bose Bluetooth hangrendszer',
-          'Nespresso kávégép',
-          'Privát fedett terasz függőággyal',
-          'Fürdőköpeny és papucs bekészítés'
-        ],
-        featured: true,
-        active: true
-      },
-      {
-        id: 'room-3',
-        name: 'Hegyvidéki Családi Villa',
-        tagline: 'Két szintes tágas vendégház nagy családoknak vagy baráti társaságoknak',
-        description: 'Három külön hálószobával, hatalmas amerikai konyhás nappalival, tágas kültéri pihenőkerttel és privát szaunaházzal ellátott prémium hegyi otthon.',
-        capacity: 6,
-        bedrooms: 3,
-        bathrooms: 2,
-        sizeM2: 110,
-        basePricePerNight: 78000,
-        weekendPricePerNight: 92000,
-        minNights: 2,
-        images: [
-          'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
-          'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80',
-          'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=80'
-        ],
-        amenities: [
-          'Privát finn szaunaház',
-          '8 személyes fedett étkezőterasz',
-          'Kerti grillező & bográcsozó szett',
-          '2 külön fürdőszoba',
-          'Mosogatógép & mosógép',
-          'Társasjáték sarok & könyvtár',
-          'Borbár válogatás a legjobb helyi pincészetekből'
-        ],
-        featured: false,
         active: true
       }
     ],
+    // The spaces of this single guesthouse
+    houseSpaces: [
+      {
+        id: 'space-nappali',
+        name: 'Amerikai konyhás nappali & étkező',
+        subtitle: 'Földszinti tágas közösségi tér',
+        description: 'Tágas nappali étkezőasztallal, két kihúzható és kényelmes kanapéval, közvetlen kertkapcsolattal a nagy üveg tolóajtókon keresztül. Teljesen felszerelt modern konyha mosogatóval, főzőlappal és csepegtetős kávéfőzővel.',
+        bedsInfo: '2 db kihúzható kényelmes kanapé (4 fő részére)',
+        images: [
+          'fff9d7b5-5d45-4249-8ebe-762d16004806.jpeg',
+          '981271ac-3a7d-43cd-8e5b-ac65dab38cca.jpeg',
+          '9c8b5255-e890-43c4-8499-2d1c72951261.jpeg',
+          'e412206e-0ae7-464c-9b3b-2fae8efc2d89.jpeg',
+          'fda939cf-838f-4d9e-bbff-f558077614d3.jpeg'
+        ],
+        features: ['Két kihúzható kényelmes kanapé', 'Felszerelt konyha & étkezőasztal', 'Csepegtetős kávéfőző', 'Légkondicionáló & fűtés']
+      },
+      {
+        id: 'space-halo-1',
+        name: 'Első hálószoba (Franciaágyas)',
+        subtitle: 'Emeleti intim erdei szoba',
+        description: 'Természetes natúr faburkolatú meghitt hálószoba kényelmes franciaággyal, szekrénnyel, növénnyel és erdei lombokra néző ablakkal.',
+        bedsInfo: '1 db kényelmes franciaágy (2 fő részére)',
+        images: [
+          'd9175ad3-682d-4cb5-b1ac-bdc3b9a0b562.jpeg',
+          'f4ef97e6-7b52-47e6-9c84-3d232024422e.jpeg'
+        ],
+        features: ['Kényelmes franciaágy', 'Natúr fa burkolat', 'Erdei panoráma ablak', 'Ruhásszekrény & akasztók']
+      },
+      {
+        id: 'space-halo-2',
+        name: 'Második hálószoba (Kétágyas)',
+        subtitle: 'Emeleti két külön ágyas szoba',
+        description: 'Világos, erdei hangulatú hálószoba két különálló egyszemélyes ággyal. Gyermekeknek, barátoknak vagy családtagoknak is tökéletes választás.',
+        bedsInfo: '2 db egyszemélyes ágy (2 fő részére)',
+        images: [
+          '465f8586-0028-4c72-8c8b-3dda5dfcd6a1.jpeg'
+        ],
+        features: ['2 db egyszemélyes ágy', 'Fa mennyezet és falak', 'Természetes fény & erdei kilátás', 'Olvasólámpa']
+      },
+      {
+        id: 'space-furdo',
+        name: 'Fürdőszoba meleg vízzel',
+        subtitle: 'Rusztikus kőburkolatú kényelem',
+        description: 'Egyedi rusztikus kőburkolattal és dekoratív vakolattal kialakított fürdőszoba, kerek háttérvilágítású dizájntükörrel, modern mosdópulttal, meleg vizes zuhanyzóval és hajszárítóval.',
+        bedsInfo: 'Földszinti elhelyezkedés',
+        images: [
+          'da3d2dd2-2f92-4043-9a84-e4b1c138dabf.jpeg',
+          '0d5afb48-2599-405a-b0c1-edbb5de98126.jpeg',
+          'c46c7cc6-5d17-480c-b48d-4dd27cfdd78f.jpeg',
+          '5abdb651-2b4a-49a2-bdae-c3055d4b3e85.jpeg'
+        ],
+        features: ['Kényelmes fürdőszoba meleg vízzel', 'Épített kőburkolatú zuhanykabin', 'Kerek dizájn megvilágított tükör', 'Hajszárító & törölközők']
+      },
+      {
+        id: 'space-kert',
+        name: 'Saját kerthelyiség & Privát pezsgőfürdő',
+        subtitle: 'Közvetlenül az erdő szélén',
+        description: 'A vendégházhoz tartozó saját, csendes kerthelyiségben privát pezsgőfürdő várja a vendégeket egész évben. A kertben szabadtéri grillezési és bográcsozási lehetőség biztosított a meghitt estékhez.',
+        bedsInfo: 'Kültéri privát wellness & pihenőkert',
+        images: [
+          'dc25c9c8-5452-4cf6-a901-9f26c6f8360d.jpeg',
+          'fda939cf-838f-4d9e-bbff-f558077614d3.jpeg'
+        ],
+        features: ['Privát pezsgőfürdő (egész évben használható)', 'Grillezési és bográcsozási lehetőség', 'Saját privát kerthelyiség', 'Madárcsicsergés és erdei csend']
+      }
+    ],
+    // EXACTLY the 12 verified amenities
     services: [
       {
         id: 'srv-1',
-        title: 'Fatüzelésű Erdei Dézsafürdő',
-        description: '38-40 fokos parajdi sós forró fürdő a csillagos égbolt alatt, közvetlenül az erdő szélén.',
-        icon: 'Bath',
+        title: 'Teljesen felszerelt konyha',
+        description: 'Főzőlap, hűtőszekrény, mikrohullámú sütő, edények, evőeszközök és minden szükséges konyhai eszköz az otthoni főzéshez.',
+        icon: 'UtensilsCrossed',
         isIncluded: true,
-        category: 'wellness',
+        category: 'konyha',
         active: true
       },
       {
         id: 'srv-2',
-        title: 'Panorámás Finn Szauna',
-        description: 'Hőkezelt rezgőnyárból épült szaunakabin illóolajokkal és merülő vödörrel a teljes regenerációért.',
-        icon: 'Flame',
-        isIncluded: true,
-        category: 'wellness',
-        active: true
-      },
-      {
-        id: 'srv-3',
-        title: 'Kézműves Reggeli Kosár',
-        description: 'Környékbeli kistermelők sajtjai, füstölt finomságai, friss kovászos kenyér, házi lekvárok és friss gyümölcslé az ajtótok elé készítve.',
-        icon: 'Coffee',
-        isIncluded: false,
-        extraPrice: 4500, // Ft/fő/reggeli
-        category: 'gasztronomia',
-        active: true
-      },
-      {
-        id: 'srv-4',
-        title: 'Romantikus Érkezési Csomag',
-        description: 'Hűtött prémium pezsgő, kézműves bonbonválogatás és friss virágcsokor várja a párokat.',
-        icon: 'Heart',
-        isIncluded: false,
-        extraPrice: 12900,
-        category: 'gasztronomia',
-        active: true
-      },
-      {
-        id: 'srv-5',
-        title: 'Zárt Kamerás Parkoló',
-        description: 'Elektromos autó töltési lehetőséggel ellátott (Type 2) biztonságos belső udvari parkolás.',
-        icon: 'Car',
-        isIncluded: true,
-        category: 'kenyelem',
-        active: true
-      },
-      {
-        id: 'srv-6',
-        title: 'Erdei Tűzrakó & Grillező',
-        description: 'Előkészített száraz bükkfa, bogrács, nyársak és modern grillfelszerelés a hangulatos estékhez.',
-        icon: 'Sparkles',
-        isIncluded: true,
-        category: 'aktiv',
-        active: true
-      },
-      {
-        id: 'srv-7',
-        title: 'Starlink Prémium Wi-Fi',
-        description: 'Stabil, villámgyors műholdas internet, ha a pihenés mellett home office munkára is szükség lenne.',
+        title: 'Wi-Fi',
+        description: 'Gyors és stabil vezeték nélküli internetkapcsolat a házban és a kertben.',
         icon: 'Wifi',
         isIncluded: true,
         category: 'kenyelem',
         active: true
       },
       {
+        id: 'srv-3',
+        title: 'Ingyenes parkolás a helyszínen',
+        description: 'Kényelmes és biztonságos ingyenes parkolási lehetőség közvetlenül a vendégháznál.',
+        icon: 'Car',
+        isIncluded: true,
+        category: 'kenyelem',
+        active: true
+      },
+      {
+        id: 'srv-4',
+        title: 'Privát pezsgőfürdő',
+        description: 'Egész évben és a megadott feltételek szerint használható privát kültéri pezsgőfürdő a kertben.',
+        icon: 'Bath',
+        isIncluded: true,
+        category: 'wellness',
+        active: true
+      },
+      {
+        id: 'srv-5',
+        title: 'Kisállatbarát szálláshely',
+        description: 'Szívesen látjuk a négylábú családtagokat is a Zuzmo Kabinban.',
+        icon: 'Heart',
+        isIncluded: true,
+        category: 'kenyelem',
+        active: true
+      },
+      {
+        id: 'srv-6',
+        title: 'Légkondicionálás',
+        description: 'A nyári meleg napokon kellemes hűvöst biztosító modern klímaberendezés.',
+        icon: 'Wind',
+        isIncluded: true,
+        category: 'kenyelem',
+        active: true
+      },
+      {
+        id: 'srv-7',
+        title: 'Fűtés',
+        description: 'Minden évszakban megbízható és komfortos fűtés a hidegebb napokra.',
+        icon: 'Flame',
+        isIncluded: true,
+        category: 'kenyelem',
+        active: true
+      },
+      {
         id: 'srv-8',
-        title: 'E-Bike Kölcsönzés & Túratérkép',
-        description: 'Prémium elektromos össztelós hegyikerékpárok előre beállított erdei GPS útvonalakkal.',
-        icon: 'Compass',
-        isIncluded: false,
-        extraPrice: 9500,
-        category: 'aktiv',
+        title: 'Saját kerthelyiség',
+        description: 'Teljesen önálló, elkerített zöld kert közvetlenül a nagymarosi erdő szélén.',
+        icon: 'Trees',
+        isIncluded: true,
+        category: 'kert',
+        active: true
+      },
+      {
+        id: 'srv-9',
+        title: 'Grillezési és bográcsozási lehetőség',
+        description: 'Kültéri tűzrakó, bográcsállvány és grillsütő a közös szabadtéri sütögetésekhez.',
+        icon: 'Sparkles',
+        isIncluded: true,
+        category: 'kert',
+        active: true
+      },
+      {
+        id: 'srv-10',
+        title: 'Hajszárító',
+        description: 'A fürdőszobában bekészített nagy teljesítményű hajszárító a vendégek kényelméért.',
+        icon: 'Sparkles',
+        isIncluded: true,
+        category: 'kenyelem',
+        active: true
+      },
+      {
+        id: 'srv-11',
+        title: 'Csepegtetős kávéfőző',
+        description: 'Hagyományos csepegtetős kávéfőző áll rendelkezésre, hogy illatos kávéval induljon a reggel.',
+        icon: 'Coffee',
+        isIncluded: true,
+        category: 'konyha',
+        active: true
+      },
+      {
+        id: 'srv-12',
+        title: 'Kényelmes fürdőszoba meleg vízzel',
+        description: 'Rusztikus kőburkolatú, tiszta és igényes fürdőszoba megbízható meleg vizes zuhannyal.',
+        icon: 'Droplets',
+        isIncluded: true,
+        category: 'kenyelem',
         active: true
       }
     ],
+    // Real photos of Zuzmo Kabin Vendégház
     gallery: [
       {
         id: 'gal-1',
-        title: 'Zuzmara Vendégház téli reggelen',
-        url: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400&q=80',
+        title: 'Zuzmo Kabin Vendégház az erdőszélen',
+        url: 'dc25c9c8-5452-4cf6-a901-9f26c6f8360d.jpeg',
         category: 'kulso',
         type: 'image',
         isCover: true
       },
       {
         id: 'gal-2',
-        title: 'Privát gőzölgő dézsafürdő a fenyvesben',
-        url: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1200&q=80',
-        category: 'wellness',
+        title: 'Nappali sarokkanapé és üveg tolóajtó a teraszra',
+        url: 'fda939cf-838f-4d9e-bbff-f558077614d3.jpeg',
+        category: 'nappali',
         type: 'image'
       },
       {
         id: 'gal-3',
-        title: 'Tágas nappali hatalmas erdei üvegfelületekkel',
-        url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
-        category: 'szobak',
+        title: 'Földszinti amerikai konyhás nappali és étkező',
+        url: 'fff9d7b5-5d45-4249-8ebe-762d16004806.jpeg',
+        category: 'nappali',
         type: 'image'
       },
       {
         id: 'gal-4',
-        title: 'Romantikus kandalló pattogó tűzzel',
-        url: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80',
-        category: 'hangulat',
+        title: 'Konyhasarok mintás csempével és csepegtetős kávéfőzővel',
+        url: '981271ac-3a7d-43cd-8e5b-ac65dab38cca.jpeg',
+        category: 'nappali',
         type: 'image'
       },
       {
         id: 'gal-5',
-        title: 'Finn szauna kilátással a természetre',
-        url: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80',
-        category: 'wellness',
+        title: 'Étkezősarok teraszkilátással az erdőre',
+        url: 'e412206e-0ae7-464c-9b3b-2fae8efc2d89.jpeg',
+        category: 'nappali',
         type: 'image'
       },
       {
         id: 'gal-6',
-        title: 'Reggeli a napsütötte erdei teraszon',
-        url: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1200&q=80',
-        category: 'hangulat',
+        title: 'Kényelmes kihúzható ülőgarnitúra párnákkal',
+        url: '9c8b5255-e890-43c4-8499-2d1c72951261.jpeg',
+        category: 'nappali',
         type: 'image'
       },
       {
         id: 'gal-7',
-        title: 'Modern hálószoba prémium pamut ágyneművel',
-        url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80',
-        category: 'szobak',
+        title: 'Emeleti franciaágyas hálószoba natúr faburkolattal',
+        url: 'd9175ad3-682d-4cb5-b1ac-bdc3b9a0b562.jpeg',
+        category: 'haloszobak',
         type: 'image'
       },
       {
         id: 'gal-8',
-        title: 'Alkotó csend és madárcsicsergés naplementekor',
-        url: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80',
-        category: 'kulso',
+        title: 'Franciaágyas szoba ruhásszekrénnyel',
+        url: 'f4ef97e6-7b52-47e6-9c84-3d232024422e.jpeg',
+        category: 'haloszobak',
         type: 'image'
       },
       {
-        id: 'gal-video-1',
-        title: 'Zuzmara Élményvideó – Drónos bejárás és téli hangulat',
-        url: 'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
-        category: 'hangulat',
-        type: 'video',
-        thumbnail: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80'
+        id: 'gal-9',
+        title: 'Emeleti második hálószoba két egyszemélyes ággyal',
+        url: '465f8586-0028-4c72-8c8b-3dda5dfcd6a1.jpeg',
+        category: 'haloszobak',
+        type: 'image'
+      },
+      {
+        id: 'gal-10',
+        title: 'Rusztikus kőburkolatú fürdőszoba dizájntükörrel',
+        url: 'da3d2dd2-2f92-4043-9a84-e4b1c138dabf.jpeg',
+        category: 'furdoszoba',
+        type: 'image'
+      },
+      {
+        id: 'gal-11',
+        title: 'Fürdőszobai mosdópult háttérvilágítással',
+        url: '0d5afb48-2599-405a-b0c1-edbb5de98126.jpeg',
+        category: 'furdoszoba',
+        type: 'image'
+      },
+      {
+        id: 'gal-12',
+        title: 'Kényelmes épített zuhanykabin meleg vízzel',
+        url: 'c46c7cc6-5d17-480c-b48d-4dd27cfdd78f.jpeg',
+        category: 'furdoszoba',
+        type: 'image'
+      },
+      {
+        id: 'gal-13',
+        title: 'Előtér nagyméretű tükörrel és faburkolattal',
+        url: '5abdb651-2b4a-49a2-bdae-c3055d4b3e85.jpeg',
+        category: 'nappali',
+        type: 'image'
+      },
+      {
+        id: 'gal-14',
+        title: 'Bejárat akasztókkal és beépített gardróbbal',
+        url: 'f0b46051-4595-4152-8c4e-5510fb429d7f.jpeg',
+        category: 'nappali',
+        type: 'image'
       }
     ],
     reviews: [
       {
         id: 'rev-1',
-        guestName: 'Horváth Ákos & Eszter',
+        guestName: 'Kovács Zoltán & Dóra',
         stayDate: '2026. szeptember',
-        roomName: 'Erdőzsongás Prémium Faház',
+        roomName: 'Zuzmo Kabin Vendégház',
         rating: 5,
-        comment: 'Felejthetetlen 3 napot töltöttünk a Zuzmarában! A dézsából nézni a naplementét a fenyők között, miközben csend vesz körül – szavakkal leírhatatlan. A reggeli kosárban lévő házi sajtok pedig külön dicséretet érdemelnek. Biztosan visszatérünk télen is!',
+        comment: 'Fantasztikus hétvégét töltöttünk itt! A privát pezsgőfürdő a hűvös estéken a csillagos ég alatt valami leírhatatlan élmény volt. A csend, a madárcsicsergés és a ház otthonos felszereltsége azonnal kikapcsolt minket.',
         status: 'approved',
         isFeatured: true,
         createdAt: '2026-09-18T14:20:00Z'
       },
       {
         id: 'rev-2',
-        guestName: 'Dr. Szabó Péter',
+        guestName: 'Balogh Katalin és családja',
         stayDate: '2026. augusztus',
-        roomName: 'Zuzmara Panoráma Lodge',
+        roomName: 'Zuzmo Kabin Vendégház',
         rating: 5,
-        comment: 'A feleségemmel érkeztünk a házassági évfordulónkra. A ház minden apró részlete a luxusról és az ízlésről tanúskodik. Külön kiemelem a szaunát és a patyolattisztaságot. A kommunikáció a házigazdával végtelenül kedves és gördülékeny volt.',
+        comment: 'Öten érkeztünk gyerekekkel és a kiskutyánkkal. A gyerekek imádták a felső kétágyas szobát, a kertben bográcsoztunk, a házigazdák pedig nagyon figyelmesek voltak. A kulcsszéffel történő önálló bejutás pedig szuper kényelmes!',
         status: 'approved',
         isFeatured: true,
         createdAt: '2026-08-27T09:15:00Z'
       },
       {
         id: 'rev-3',
-        guestName: 'Kerekes Nikolett & barátok',
+        guestName: 'Tóth Marcell & barátok',
         stayDate: '2026. július',
-        roomName: 'Hegyvidéki Családi Villa',
+        roomName: 'Zuzmo Kabin Vendégház',
         rating: 5,
-        comment: 'Hatunk kényelmesen elfért a villában. A kerti sütögető és a tágas terasz fantasztikus estéket biztosított. A Starlink net meglepően gyors volt, a konyha pedig mindennel fel volt szerelve, amire csak szükségünk volt.',
+        comment: 'Tökéletes elhelyezkedés Nagymaroson, közvetlenül az erdő szélén. A konyhában minden adott a sütés-főzéshez, a csepegtetős kávé pedig a teraszon a reggeli napfényben igazi napindító volt. Biztosan visszatérünk!',
         status: 'approved',
         isFeatured: true,
         createdAt: '2026-07-14T18:40:00Z'
-      },
-      {
-        id: 'rev-4',
-        guestName: 'Bognár Tamás',
-        stayDate: '2026. október',
-        roomName: 'Erdőzsongás Prémium Faház',
-        rating: 5,
-        comment: 'Tökéletes elvonulás a városi pörgésből. A kandalló melege, az erdő illata és a csend azonnal feltöltötte az akkumulátorainkat. Minden szállásadónak így kellene csinálnia!',
-        status: 'approved',
-        isFeatured: true,
-        createdAt: '2026-10-02T11:00:00Z'
       }
     ],
     bookings: [
       {
         id: 'ZUZ-2026-8941',
-        roomId: 'room-1',
-        roomName: 'Erdőzsongás Prémium Faház',
+        roomId: 'zuzmo-kabin',
+        roomName: 'Zuzmo Kabin Vendégház',
         guestName: 'Nagy Gergely',
         guestEmail: 'nagy.gergely.demo@example.com',
-        guestPhone: '+36 30 123 4567',
+        guestPhone: '+36 30 462 1242',
         checkIn: '2026-10-20',
         checkOut: '2026-10-23',
-        guestsCount: 2,
+        guestsCount: 4,
         nights: 3,
-        baseTotal: 174000,
-        extrasTotal: 27000,
-        touristTaxTotal: 3000,
-        grandTotal: 204000,
-        depositRequired: 61200,
-        depositPaid: 61200,
+        baseTotal: 156000,
+        extrasTotal: 0,
+        touristTaxTotal: 6000,
+        grandTotal: 162000,
+        depositRequired: 48600,
+        depositPaid: 48600,
         paymentMethod: 'card',
         paymentStatus: 'deposit_paid',
         status: 'confirmed',
-        selectedExtras: [
-          { serviceId: 'srv-3', title: 'Kézműves Reggeli Kosár', price: 27000 }
-        ],
-        specialRequests: 'Késői érkezés várható 19:00 körül. Kérjük a dézsa előzetes felfűtését, köszönjük!',
+        selectedExtras: [],
+        specialRequests: 'Késői érkezés várható 19:00 körül. A kulcsszéf kódot kérjük előre elküldeni.',
         createdAt: '2026-10-10T14:22:00Z',
-        notes: 'Vendég telefonon megerősítette az érkezési időt.'
-      },
-      {
-        id: 'ZUZ-2026-9210',
-        roomId: 'room-2',
-        roomName: 'Zuzmara Panoráma Lodge',
-        guestName: 'Farkas Lili',
-        guestEmail: 'farkas.lili.demo@example.com',
-        guestPhone: '+36 70 987 6543',
-        checkIn: '2026-10-24',
-        checkOut: '2026-10-26',
-        guestsCount: 2,
-        nights: 2,
-        baseTotal: 108000,
-        extrasTotal: 12900,
-        touristTaxTotal: 2000,
-        grandTotal: 122900,
-        depositRequired: 36870,
-        depositPaid: 122900,
-        paymentMethod: 'szep_card',
-        paymentStatus: 'fully_paid',
-        status: 'confirmed',
-        selectedExtras: [
-          { serviceId: 'srv-4', title: 'Romantikus Érkezési Csomag', price: 12900 }
-        ],
-        specialRequests: 'Házassági évfordulós meglepetés.',
-        createdAt: '2026-10-12T16:05:00Z',
-        notes: 'OTP SZÉP Kártyával teljesen kifizetve.'
+        notes: 'Vendég telefonon egyeztetve.'
       }
     ],
-    blockedDates: [
-      {
-        id: 'block-1',
-        roomId: 'room-3',
-        startDate: '2026-10-28',
-        endDate: '2026-10-31',
-        reason: 'Éves szauna karbantartás és fafelület ápolás'
-      }
-    ],
+    blockedDates: [],
     siteContent: {
       hero: {
-        badge: '✨ Prémium Természetközeli Vendégház & Wellness',
-        title: 'Ahol a csend és a luxus találkozik a Börzsöny fenyveseiben',
-        subtitle: 'Zuzmara Vendégház – exkluzív erdei faházak privát dézsafürdővel, panorámás finn szaunával és kényeztető helyi ízekkel a festői Zebegény erdejében.',
-        coverImage: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=85',
-        announcement: '🌲 Téli előfoglalási akció: 3 éjszaka feletti foglalás esetén ajándék kézműves reggeli kosár!'
+        badge: '✨ Önálló Vendégház Nagymaroson, Akár 6 Fő Részére',
+        title: 'Zuzmo Kabin Vendégház – kikapcsolódás a Dunakanyar erdőszélén',
+        subtitle: 'Fedezd fel a nyugalmat Nagymaroson, az erdő szélén található, önálló vendégházunkban! A Zuzmo Kabin ideális választás pároknak, családoknak és baráti társaságoknak, akár 6 fő részére.',
+        paragraph2: 'Pihenj a privát pezsgőfürdőben, élvezd a kert nyugalmát, grillezz a szabadban, és töltődj fel a természet közelségében. A ház egész évben kényelmes kikapcsolódást kínál.',
+        coverImage: 'dc25c9c8-5452-4cf6-a901-9f26c6f8360d.jpeg',
+        announcement: '🌲 Teljesen önálló ház és privát kerthelyiség a nagymarosi erdő szélén!'
       },
       about: {
-        title: 'A Zuzmara Vendégház Története',
-        subtitle: 'Egy álom, amely a természet iránti mély tiszteletből született',
-        storyParagraph1: 'A Zuzmara Vendégház gondolata egy téli erdei túránk alkalmával fogant meg bennünk, amikor a fenyőfák ágain csillogó kristálytiszta zuzmara látványa és a mindent betöltő mély csend megállította az időt. Elhatároztuk, hogy létrehozunk egy olyan helyet, ahol a prémium elegancia és a vadregényes természet tökéletes harmóniában él együtt.',
-        storyParagraph2: 'A faházak építése során a természetes, fenntartható anyagokra és a skandináv letisztultságra fókuszáltunk. Minden rönk és deszka gondos kezek munkája, a hatalmas üvegfelületek pedig azt az érzést keltik, mintha a vendég a lombok között pihenne. Nincsenek szomszédok, nincsen zaj, csak a szél susogása és a pattogó kandallótűz.',
-        storyParagraph3: 'Nálunk a vendéglátás nem szolgáltatás, hanem szívből jövő gondoskodás: a fűtött sós vizes dézsától a környékbeli őstermelők legfinomabb reggelijéig minden azért van, hogy ti újra egymásra és önmagatokra találjatok.',
-        image1: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1000&q=80',
-        image2: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1000&q=80',
+        title: 'A Helyről',
+        subtitle: 'Zuzmo Kabin Vendégház a Dunakanyarban',
+        storyParagraph1: 'A Dunakanyarban, Nagymaroson, a Szekér utcában, az erdő szélén várja vendégeit a Zuzmo Kabin Vendégház.',
+        storyParagraph2: 'A teljesen önálló ház és a hozzá tartozó kerthelyiség ideális akár 6 fős társaságok, családok és párok számára is. A madárcsicsergés, a természet közelsége, a grillezési és bográcsozási lehetőség, valamint a privát pezsgőfürdő gondoskodik a kikapcsolódásról.',
+        storyParagraph3: 'A földszinten amerikai konyhás nappali található két kihúzható, kényelmes kanapéval és meleg vizes fürdőszobával. Az emeleten két hálószoba kapott helyet: az egyikben franciaágy, a másikban két egyszemélyes ágy biztosít kényelmes pihenést.',
+        storyParagraph4: 'A ház minden évszakban használható, légkondicionálóval és fűtéssel felszerelt.',
+        closingNote: 'Várjuk szeretettel vendégeinket!',
+        image1: 'dc25c9c8-5452-4cf6-a901-9f26c6f8360d.jpeg',
+        image2: 'fda939cf-838f-4d9e-bbff-f558077614d3.jpeg',
         features: [
-          { title: '100% Privát Szféra', desc: 'Nincs közös recepció vagy átmenő forgalom. A birtok és a wellness eszközök kizárólag a tiétek.' },
-          { title: 'Egész Éves Wellness', desc: 'Fatüzelésű forró sós dézsafürdő és üvegfalú finn szauna akár hófúvásban is.' },
-          { title: 'Helyi Ízek & Gondoskodás', desc: 'A Dunakanyar és a Börzsöny legkiválóbb kézműves termelőinek finomságai közvetlenül a házatokhoz szállítva.' },
-          { title: 'Öko-Tudatos Luxus', desc: 'Megújuló energiák, prémium hőszigetelés és natúr fából készült építészeti megoldások.' }
+          {
+            title: 'Önálló bejutás',
+            desc: 'A vendégek zárható kulcsszéf segítségével, önállóan juthatnak be a házba.'
+          },
+          {
+            title: 'Gyönyörű környék',
+            desc: 'Pihenés a Dunakanyarban, Nagymaros erdőszéli, festői környezetében.'
+          },
+          {
+            title: 'Kávézás otthon',
+            desc: 'Csepegtetős kávéfőző áll a vendégek rendelkezésére, hogy jól induljon a reggel.'
+          }
         ]
       },
       contact: {
-        phone: '+36 30 789 4512',
-        email: 'info@zuzmaravendeghaz.hu',
-        address: '2628 Zebegény, Vadvirág dűlő 14.',
-        locationNote: 'Zebegény központjától 4 perces festői erdei autóúton, jól járható szilárd burkolatú hegyi úton közelíthető meg. Télen is karbantartott út!',
-        ntakNumber: 'NTAK regisztrációs szám: EG23000987 (Magánszálláshely)',
-        gpsCoords: '47.7981, 18.9125'
+        phone: '+36 30 462 1242',
+        email: 'info@zuzmokabin.hu',
+        address: 'Nagymaros, Szekér utca',
+        locationNote: 'A Dunakanyarban, Nagymaroson, a Szekér utcában, az erdő szélén.',
+        ntakNumber: 'NTAK regisztrációs szám: MA19023507'
       },
       policy: {
-        checkInTime: '15:00 - 20:00 (Kódos okos kulcsszéffel rugalmas érkezés)',
+        checkInTime: '15:00-tól (Zárható kulcsszéffel önálló bejutás)',
         checkOutTime: '10:00-ig',
         quietHours: '22:00 - 08:00 között kérjük a természet és a szomszédos erdő csendjének tiszteletben tartását.',
-        cancellationDays: 14, // napokkal előtte díjmentes
-        depositPercentage: 30, // 30% előleg
-        touristTaxPerPersonPerNight: 500 // Ft/fő/éj IFA (18 év felett)
+        cancellationDays: 14,
+        depositPercentage: 30,
+        touristTaxPerPersonPerNight: 500
       }
     },
     faqs: [
       {
         id: 'faq-1',
         category: 'erkezes',
-        question: 'Mikor lehet elfoglalni és mikor kell elhagyni a szállást?',
-        answer: 'Az érkezés napján 15:00 órától lehet bejelentkezni. Az önálló, kontaktmentes érkezést biztonsági kódos okosszéf biztosítja, így akár késő este is rugalmasan érkezhettek. A távozás napján 10:00 óráig kérjük a szállás elhagyását.'
+        question: 'Hogyan történik a bejutás a vendégházba?',
+        answer: 'A vendégek zárható kulcsszéf segítségével, teljesen önállóan és rugalmasan juthatnak be a házba az érkezés napján 15:00 órától. A távozás napján 10:00 óráig kérjük a szállás elhagyását.'
       },
       {
         id: 'faq-2',
         category: 'wellness',
-        question: 'Hogyan működik a dézsa és a szauna használata? Van-e külön díja?',
-        answer: 'A dézsafürdő és a panoráma szauna használata TELJESEN INGYENES és korlátlan a tartózkodásotok alatt! A dézsát érkezésetekre kérésre előre felfűtjük tiszta parajdi sós vízzel, a helyszínen pedig bőségesen találtok bekészített száraz bükkfát a további fűtéshez.'
+        question: 'Mikor és hogyan használható a privát pezsgőfürdő?',
+        answer: 'A privát pezsgőfürdő a vendégház saját kertjében található, egész évben és a megadott házirendi feltételek szerint használható. Kizárólag a házat kibérlő vendégek privát használatára áll rendelkezésre.'
       },
       {
         id: 'faq-3',
         category: 'foglalas',
-        question: 'Milyen fizetési módok érhetők el? Elfogadtok SZÉP Kártyát?',
-        answer: 'Igen! Elfogadunk OTP, MBH és K&H SZÉP Kártyát, bankkártyás online fizetést (Mastercard, Visa), valamint közvetlen azonnali banki átutalást. A foglalás megerősítéséhez 30% előleg szükséges, a fennmaradó összeget érkezés előtt vagy a helyszínen rendezhetitek.'
+        question: 'Hány fő fér el kényelmesen a Zuzmo Kabinban?',
+        answer: 'A teljes ház akár 6 fő kényelmes elszállásolására alkalmas. Az emeleten egy franciaágyas szoba (2 fő) és egy két külön ágyas szoba (2 fő) található, a földszinti nappaliban pedig két kényelmes kihúzható kanapé (2-2 fő) biztosít fekhelyet.'
       },
       {
         id: 'faq-4',
-        category: 'foglalas',
-        question: 'Milyen lemondási feltételek érvényesek?',
-        answer: 'Az érkezést megelőző 14. napig a foglalás teljesen díjmentesen lemondható vagy módosítható egy későbbi szabad időpontra, és a befizetett előleget 100%-ban visszatérítjük. 14 napon belüli lemondás esetén az előleg a vendégházat illeti.'
+        category: 'hazirend',
+        question: 'Lehet-e házi kedvencet (kutyust) hozni?',
+        answer: 'Igen! A Zuzmo Kabin Vendégház kisállatbarát szálláshely, szívesen látjuk a jól nevelt kutyusokat a saját bekerített kertben.'
       },
       {
         id: 'faq-5',
-        category: 'hazirend',
-        question: 'Lehet-e házi kedvencet hozni a vendégházba?',
-        answer: 'A Zuzmara Panoráma Lodge és Erdőzsongás faházunk hipoallergén környezet biztosítása érdekében kisállat-mentes, azonban a Hegyvidéki Családi Villánkba előzetes egyeztetés alapján jól nevelt, szobatiszta kistestű kutyusokat szeretettel fogadunk (3.000 Ft/éj felár ellenében).'
+        category: 'foglalas',
+        question: 'Milyen fizetési módok érhetők el?',
+        answer: 'Elfogadunk bankkártyás online fizetést, OTP, MBH és K&H SZÉP Kártyát, valamint közvetlen banki átutalást. A foglalás megerősítéséhez 30% előleg szükséges.'
       },
       {
         id: 'faq-6',
         category: 'erkezes',
-        question: 'Milyen úton közelíthető meg a vendégház télen vagy esős időben?',
-        answer: 'A vendégházhoz vezető hegyi út aszfaltozott és szilárd burkolatú, télen is rendszeresen takarított és sózott. Normál személyautóval bármely évszakban könnyedén és biztonságosan járható.'
+        question: 'Hol található a ház, és van-e parkolási lehetőség?',
+        answer: 'A vendégház Nagymaroson, a Szekér utcában található, közvetlenül az erdő szélén a Dunakanyarban. A helyszínen ingyenes privát parkoló áll a vendégek rendelkezésére.'
       }
     ],
     emailTemplates: [
       {
         id: 'tpl-1',
         name: 'Foglalás Visszaigazolás',
-        subject: 'Sikeres foglalás – Zuzmara Vendégház ({{bookingId}})',
-        body: 'Kedves {{guestName}}!\n\nÖrömmel értesítünk, hogy a foglalásodat a Zuzmara Vendégházban sikeresen rögzítettük!\n\nSzállásegység: {{roomName}}\nÉrkezés: {{checkIn}}\nTávozás: {{checkOut}}\nVendégek száma: {{guestsCount}} fő\nVégösszeg: {{grandTotal}} Ft\nBefizetett előleg: {{depositPaid}} Ft\n\nÉrkezés előtt 2 nappal elküldjük a kulcsszéf nyitókódját és az erdei útvonaltervet.\n\nSzeretettel várunk Benneteket!\nZuzmara Vendégház Csapata'
+        subject: 'Sikeres foglalás – Zuzmo Kabin Vendégház ({{bookingId}})',
+        body: 'Kedves {{guestName}}!\n\nÖrömmel értesítünk, hogy a foglalásodat a Zuzmo Kabin Vendégházban sikeresen rögzítettük!\n\nSzálláshely: Zuzmo Kabin Vendégház (Nagymaros, Szekér utca)\nÉrkezés: {{checkIn}}\nTávozás: {{checkOut}}\nVendégek száma: {{guestsCount}} fő\nVégösszeg: {{grandTotal}} Ft\nBefizetett előleg: {{depositPaid}} Ft\n\nÉrkezés előtt elküldjük az önálló bejutást biztosító zárható kulcsszéf nyitókódját.\nTelefonszámunk: +36 30 462 1242\n\nSzeretettel várunk Benneteket a Dunakanyarban!\nZuzmo Kabin Vendégház'
       },
       {
         id: 'tpl-2',
         name: 'Előleg Bekérő',
-        subject: 'Előlegbekérő – Zuzmara Vendégház ({{bookingId}})',
-        body: 'Kedves {{guestName}}!\n\nKöszönjük a foglalási igényt. A lefoglalt időszak véglegesítéséhez kérjük az alábbi előleg átutalását 48 órán belül:\n\nÖsszeg: {{depositRequired}} Ft\nBankszámlaszám: 11773000-12345678-00000000 (OTP Bank)\nKedvezményezett: Zuzmara Vendégház Kft.\nKözlemény: {{bookingId}}\n\nÜdvözlettel,\nZuzmara Vendégház'
+        subject: 'Előlegbekérő – Zuzmo Kabin Vendégház ({{bookingId}})',
+        body: 'Kedves {{guestName}}!\n\nKöszönjük érdeklődésedet a Zuzmo Kabin Vendégház iránt. A lefoglalt időszak véglegesítéséhez kérjük az alábbi előleg átutalását 48 órán belül:\n\nÖsszeg: {{depositRequired}} Ft\nKedvezményezett: Zuzmo Kabin\nKözlemény: {{bookingId}}\nKapcsolat: +36 30 462 1242\n\nÜdvözlettel,\nZuzmo Kabin Vendégház'
       }
     ],
     emailLogs: [
       {
         id: 'log-1',
         to: 'nagy.gergely.demo@example.com',
-        subject: 'Sikeres foglalás – Zuzmara Vendégház (ZUZ-2026-8941)',
+        subject: 'Sikeres foglalás – Zuzmo Kabin Vendégház (ZUZ-2026-8941)',
         bookingId: 'ZUZ-2026-8941',
         sentAt: '2026-10-10T14:22:05Z',
         type: 'booking_confirmed',
-        contentPreview: 'Kedves Nagy Gergely! Örömmel értesítünk, hogy a foglalásodat sikeresen rögzítettük...'
+        contentPreview: 'Kedves Nagy Gergely! Örömmel értesítünk, hogy a foglalásodat a Zuzmo Kabin Vendégházba sikeresen rögzítettük...'
       }
     ],
     settings: {
       integrations: {
         iCalSyncEnabled: true,
-        lastSyncAt: '2026-10-14T07:00:00Z',
-        onlinePaymentGateway: 'SimplePay & OTP SZÉP Kártya Live Sandbox',
+        lastSyncAt: '2026-10-16T08:00:00Z',
+        onlinePaymentGateway: 'SimplePay & SZÉP Kártya Live',
         status: 'online'
       }
     }
@@ -551,7 +595,6 @@ const sessions = new Map<string, { userId: string; username: string; role: 'owne
 
 function generateToken(user: any): string {
   const token = crypto.randomBytes(32).toString('hex');
-  // 7 days expiration
   const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000;
   sessions.set(token, {
     userId: user.id,
@@ -599,6 +642,7 @@ app.get('/api/site-data', (_req: Request, res: Response) => {
   res.json({
     content: db.siteContent,
     rooms: db.rooms.filter((r: any) => r.active),
+    houseSpaces: db.houseSpaces || [],
     services: db.services.filter((s: any) => s.active),
     gallery: db.gallery,
     reviews: db.reviews.filter((r: any) => r.status === 'approved'),
@@ -610,24 +654,23 @@ app.get('/api/site-data', (_req: Request, res: Response) => {
   });
 });
 
-// 2. Check room availability & calculate quote
+// 2. Check room availability & calculate quote for single house
 app.get('/api/availability', (req: Request, res: Response) => {
-  const { roomId, checkIn, checkOut, guests } = req.query as {
-    roomId: string;
+  const { checkIn, checkOut, guests } = req.query as {
     checkIn: string;
     checkOut: string;
     guests?: string;
   };
 
-  if (!roomId || !checkIn || !checkOut) {
-    res.status(400).json({ error: 'Hiányzó paraméterek (roomId, checkIn, checkOut szükséges)' });
+  if (!checkIn || !checkOut) {
+    res.status(400).json({ error: 'Hiányzó paraméterek (checkIn, checkOut szükséges)' });
     return;
   }
 
   const db = loadDb();
-  const room = db.rooms.find((r: any) => r.id === roomId && r.active);
+  const room = db.rooms[0];
   if (!room) {
-    res.status(404).json({ error: 'A keresett szállásegység nem található vagy inaktív' });
+    res.status(404).json({ error: 'A szálláshely nem található' });
     return;
   }
 
@@ -643,34 +686,37 @@ app.get('/api/availability', (req: Request, res: Response) => {
 
   if (nights < room.minNights) {
     res.status(400).json({
-      error: `A minimálisan foglalható éjszakák száma ehhez a házhoz: ${room.minNights} éjszaka`
+      error: `A minimálisan foglalható éjszakák száma: ${room.minNights} éjszaka`
     });
+    return;
+  }
+
+  const guestCount = guests ? parseInt(guests, 10) : 2;
+  if (guestCount > 6) {
+    res.status(400).json({ error: 'A szálláshely legfeljebb 6 vendég számára alkalmas.' });
     return;
   }
 
   // Check collision with existing active bookings
   const hasConflict = db.bookings.some((b: any) => {
-    if (b.roomId !== roomId) return false;
     if (b.status === 'cancelled') return false;
-    // Overlap condition: NOT (b.checkOut <= checkIn || b.checkIn >= checkOut)
     return !(b.checkOut <= checkIn || b.checkIn >= checkOut);
   });
 
   // Check collision with blocked dates
   const hasBlockedConflict = (db.blockedDates || []).some((b: any) => {
-    if (b.roomId !== roomId) return false;
     return !(b.endDate <= checkIn || b.startDate >= checkOut);
   });
 
   if (hasConflict || hasBlockedConflict) {
     res.json({
       available: false,
-      message: 'A választott időpontban a szállásegység már foglalt vagy karbantartás alatt áll.'
+      message: 'A választott időpontban a Zuzmo Kabin Vendégház már foglalt vagy karbantartás alatt áll.'
     });
     return;
   }
 
-  // Calculate pricing breakdown
+  // Calculate pricing
   let baseTotal = 0;
   const cur = new Date(inDate);
   while (cur < outDate) {
@@ -680,7 +726,6 @@ app.get('/api/availability', (req: Request, res: Response) => {
     cur.setDate(cur.getDate() + 1);
   }
 
-  const guestCount = guests ? parseInt(guests, 10) : 2;
   const ifaPerNight = db.siteContent.policy.touristTaxPerPersonPerNight || 500;
   const touristTaxTotal = guestCount * nights * ifaPerNight;
   const depositPercent = db.siteContent.policy.depositPercentage || 30;
@@ -706,19 +751,17 @@ app.get('/api/availability', (req: Request, res: Response) => {
 // 3. Submit a new Booking with Server-Side Concurrency check
 app.post('/api/bookings', (req: Request, res: Response) => {
   const {
-    roomId,
     guestName,
     guestEmail,
     guestPhone,
     checkIn,
     checkOut,
     guestsCount,
-    selectedExtras,
     specialRequests,
     paymentMethod
   } = req.body;
 
-  if (!roomId || !guestName || !guestEmail || !guestPhone || !checkIn || !checkOut || !guestsCount) {
+  if (!guestName || !guestEmail || !guestPhone || !checkIn || !checkOut || !guestsCount) {
     res.status(400).json({ error: 'Kérjük, töltsd ki az összes kötelező mezőt!' });
     return;
   }
@@ -726,22 +769,17 @@ app.post('/api/bookings', (req: Request, res: Response) => {
   const inDate = new Date(checkIn);
   const outDate = new Date(checkOut);
   if (inDate >= outDate) {
-    res.status(400).json({ error: 'A távozási dátumnak a távozás előtt kell lennie.' });
+    res.status(400).json({ error: 'A távozási dátumnak az érkezés után kell lennie.' });
+    return;
+  }
+
+  if (guestsCount > 6) {
+    res.status(400).json({ error: 'A Zuzmo Kabin Vendégház legfeljebb 6 vendég számára foglalható.' });
     return;
   }
 
   const db = loadDb();
-  const room = db.rooms.find((r: any) => r.id === roomId && r.active);
-  if (!room) {
-    res.status(404).json({ error: 'A választott szállásegység nem található.' });
-    return;
-  }
-
-  if (guestsCount > room.capacity) {
-    res.status(400).json({ error: `A maximális vendégszám ebben a házban: ${room.capacity} fő.` });
-    return;
-  }
-
+  const room = db.rooms[0];
   const nights = Math.ceil(Math.abs(outDate.getTime() - inDate.getTime()) / (1000 * 60 * 60 * 24));
   if (nights < room.minNights) {
     res.status(400).json({ error: `A minimálisan foglalható éjszakák száma: ${room.minNights} éjszaka.` });
@@ -750,19 +788,17 @@ app.post('/api/bookings', (req: Request, res: Response) => {
 
   // Atomic conflict check
   const conflict = db.bookings.some((b: any) => {
-    if (b.roomId !== roomId) return false;
     if (b.status === 'cancelled') return false;
     return !(b.checkOut <= checkIn || b.checkIn >= checkOut);
   });
 
   const blockConflict = (db.blockedDates || []).some((b: any) => {
-    if (b.roomId !== roomId) return false;
     return !(b.endDate <= checkIn || b.startDate >= checkOut);
   });
 
   if (conflict || blockConflict) {
     res.status(409).json({
-      error: 'Sajnáljuk, a választott időpontban a házat épp most foglalták le. Kérjük válassz másik dátumot vagy szállásegységet!'
+      error: 'Sajnáljuk, a választott időpontban a vendégházat épp most foglalták le. Kérjük válassz másik időpontot!'
     });
     return;
   }
@@ -777,29 +813,18 @@ app.post('/api/bookings', (req: Request, res: Response) => {
     cur.setDate(cur.getDate() + 1);
   }
 
-  let extrasTotal = 0;
-  const formattedExtras = (selectedExtras || []).map((extra: any) => {
-    extrasTotal += extra.price || 0;
-    return {
-      serviceId: extra.serviceId,
-      title: extra.title,
-      price: extra.price
-    };
-  });
-
   const ifaPerNight = db.siteContent.policy.touristTaxPerPersonPerNight || 500;
   const touristTaxTotal = guestsCount * nights * ifaPerNight;
-  const grandTotal = baseTotal + extrasTotal + touristTaxTotal;
+  const grandTotal = baseTotal + touristTaxTotal;
   const depositPercent = db.siteContent.policy.depositPercentage || 30;
   const depositRequired = Math.round(grandTotal * (depositPercent / 100));
 
-  // Generate unique human-readable booking code
   const randomSuffix = Math.floor(1000 + Math.random() * 9000);
   const bookingId = `ZUZ-2026-${randomSuffix}`;
 
   const newBooking = {
     id: bookingId,
-    roomId,
+    roomId: room.id,
     roomName: room.name,
     guestName,
     guestEmail,
@@ -809,7 +834,7 @@ app.post('/api/bookings', (req: Request, res: Response) => {
     guestsCount,
     nights,
     baseTotal,
-    extrasTotal,
+    extrasTotal: 0,
     touristTaxTotal,
     grandTotal,
     depositRequired,
@@ -817,10 +842,10 @@ app.post('/api/bookings', (req: Request, res: Response) => {
     paymentMethod: paymentMethod || 'card',
     paymentStatus: 'pending',
     status: 'pending',
-    selectedExtras: formattedExtras,
+    selectedExtras: [],
     specialRequests: specialRequests || '',
     createdAt: new Date().toISOString(),
-    notes: 'Weboldalról indított online foglalás.'
+    notes: 'Online foglalás a weboldalról (Nagymaros, Szekér utca).'
   };
 
   db.bookings.push(newBooking);
@@ -830,11 +855,11 @@ app.post('/api/bookings', (req: Request, res: Response) => {
   db.emailLogs.unshift({
     id: `log-${Date.now()}`,
     to: guestEmail,
-    subject: `Foglalási igény beérkezett – Zuzmara Vendégház (${bookingId})`,
+    subject: `Foglalási igény beérkezett – Zuzmo Kabin Vendégház (${bookingId})`,
     bookingId,
     sentAt: new Date().toISOString(),
     type: 'booking_received',
-    contentPreview: `Kedves ${guestName}! Foglalási igényedet a(z) ${room.name} szállásegységre (${checkIn} - ${checkOut}) sikeresen rögzítettük.`
+    contentPreview: `Kedves ${guestName}! Foglalási igényedet a Zuzmo Kabin Vendégházra (${checkIn} - ${checkOut}) sikeresen rögzítettük. Telefon: +36 30 462 1242.`
   });
 
   saveDb(db);
@@ -872,12 +897,11 @@ app.post('/api/payment/confirm', (req: Request, res: Response) => {
   booking.notes = (booking.notes ? booking.notes + '\n' : '') +
     `Fizetés sikeresen megerősítve (${paidAmount.toLocaleString('hu-HU')} Ft) - Tranzakció: ${transactionRef || 'TRX-' + Date.now()}`;
 
-  // Log confirmation email
   db.emailLogs = db.emailLogs || [];
   db.emailLogs.unshift({
     id: `log-${Date.now()}`,
     to: booking.guestEmail,
-    subject: `Foglalás megerősítve és fizetve – Zuzmara Vendégház (${booking.id})`,
+    subject: `Foglalás megerősítve és fizetve – Zuzmo Kabin Vendégház (${booking.id})`,
     bookingId: booking.id,
     sentAt: new Date().toISOString(),
     type: 'booking_confirmed',
@@ -893,9 +917,9 @@ app.post('/api/payment/confirm', (req: Request, res: Response) => {
   });
 });
 
-// 5. Submit guest review (public, queued for moderation)
+// 5. Submit review
 app.post('/api/reviews', (req: Request, res: Response) => {
-  const { guestName, roomName, stayDate, rating, comment } = req.body;
+  const { guestName, stayDate, rating, comment } = req.body;
 
   if (!guestName || !comment || !rating) {
     res.status(400).json({ error: 'Minden mező kitöltése kötelező!' });
@@ -912,7 +936,7 @@ app.post('/api/reviews', (req: Request, res: Response) => {
   const newReview = {
     id: `rev-${Date.now()}`,
     guestName,
-    roomName: roomName || 'Zuzmara Vendégház',
+    roomName: 'Zuzmo Kabin Vendégház',
     stayDate: stayDate || new Date().toLocaleDateString('hu-HU', { year: 'numeric', month: 'long' }),
     rating: numRating,
     comment,
@@ -944,7 +968,7 @@ app.post('/api/contact', (req: Request, res: Response) => {
   db.emailLogs.unshift({
     id: `contact-${Date.now()}`,
     to: db.siteContent.contact.email,
-    subject: `Új érdeklődés a weboldalról: ${subject || 'Általános kérdés'} (${name})`,
+    subject: `Új érdeklődés a Zuzmo Kabin weboldalról: ${subject || 'Kérdés'} (${name})`,
     sentAt: new Date().toISOString(),
     type: 'contact_inquiry',
     contentPreview: `Küldő: ${name} (${email}, Tel: ${phone || 'nincs megadva'}). Üzenet: ${message}`
@@ -954,7 +978,7 @@ app.post('/api/contact', (req: Request, res: Response) => {
 
   res.json({
     success: true,
-    message: 'Köszönjük üzenetedet! Hamarosan, általában 2-4 órán belül válaszolunk.'
+    message: 'Köszönjük megkeresésedet! Munkatársunk hamarosan felveszi veled a kapcsolatot a +36 30 462 1242 számon vagy e-mailben.'
   });
 });
 
@@ -962,14 +986,12 @@ app.post('/api/contact', (req: Request, res: Response) => {
 // AUTHENTICATION ENDPOINTS
 // ==========================================
 
-// Setup status check
 app.get('/api/auth/setup-status', (_req: Request, res: Response) => {
   const db = loadDb();
   const hasOwner = (db.users || []).some((u: any) => u.role === 'owner');
   res.json({ hasOwner, userCount: (db.users || []).length });
 });
 
-// First admin setup
 app.post('/api/auth/setup-master', (req: Request, res: Response) => {
   const { username, email, password, name } = req.body;
   if (!username || !email || !password || !name) {
@@ -1013,7 +1035,6 @@ app.post('/api/auth/setup-master', (req: Request, res: Response) => {
   });
 });
 
-// Admin login
 app.post('/api/auth/login', (req: Request, res: Response) => {
   const { usernameOrEmail, password } = req.body;
   if (!usernameOrEmail || !password) {
@@ -1045,7 +1066,6 @@ app.post('/api/auth/login', (req: Request, res: Response) => {
   });
 });
 
-// Get current session
 app.get('/api/auth/me', authMiddleware, (req: Request, res: Response) => {
   const session = (req as any).user;
   const db = loadDb();
@@ -1066,7 +1086,6 @@ app.get('/api/auth/me', authMiddleware, (req: Request, res: Response) => {
   });
 });
 
-// Logout
 app.post('/api/auth/logout', (req: Request, res: Response) => {
   const authHeader = req.headers.authorization;
   if (authHeader && authHeader.startsWith('Bearer ')) {
@@ -1080,7 +1099,6 @@ app.post('/api/auth/logout', (req: Request, res: Response) => {
 // ADMIN PROTECTED ENDPOINTS
 // ==========================================
 
-// Dashboard stats
 app.get('/api/admin/stats', authMiddleware, (_req: Request, res: Response) => {
   const db = loadDb();
   const bookings = db.bookings || [];
@@ -1091,7 +1109,6 @@ app.get('/api/admin/stats', authMiddleware, (_req: Request, res: Response) => {
   const pendingBookings = bookings.filter((b: any) => b.status === 'pending').length;
   const todayArrivals = bookings.filter((b: any) => b.checkIn === todayStr && b.status === 'confirmed').length;
 
-  // Estimated gross revenue
   const totalRevenue = bookings
     .filter((b: any) => b.status === 'confirmed' || b.status === 'completed')
     .reduce((sum: number, b: any) => sum + (b.grandTotal || 0), 0);
@@ -1105,11 +1122,10 @@ app.get('/api/admin/stats', authMiddleware, (_req: Request, res: Response) => {
     todayArrivals,
     totalRevenue,
     pendingReviews,
-    totalRooms: (db.rooms || []).length
+    totalRooms: 1
   });
 });
 
-// Manage bookings
 app.get('/api/admin/bookings', authMiddleware, (req: Request, res: Response) => {
   const db = loadDb();
   let list = db.bookings || [];
@@ -1130,12 +1146,10 @@ app.get('/api/admin/bookings', authMiddleware, (req: Request, res: Response) => 
     );
   }
 
-  // Sort descending by created date
   list.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   res.json(list);
 });
 
-// Update booking status or notes
 app.put('/api/admin/bookings/:id', authMiddleware, (req: Request, res: Response) => {
   const { id } = req.params;
   const updates = req.body;
@@ -1152,7 +1166,6 @@ app.put('/api/admin/bookings/:id', authMiddleware, (req: Request, res: Response)
   res.json({ success: true, booking: db.bookings[index] });
 });
 
-// Cancel / delete booking
 app.delete('/api/admin/bookings/:id', authMiddleware, (req: Request, res: Response) => {
   const { id } = req.params;
   const db = loadDb();
@@ -1163,13 +1176,11 @@ app.delete('/api/admin/bookings/:id', authMiddleware, (req: Request, res: Respon
     return;
   }
 
-  // Rather than hard delete, mark as cancelled to preserve history
   db.bookings[index].status = 'cancelled';
   saveDb(db);
   res.json({ success: true, message: 'Foglalás lemondva' });
 });
 
-// Create manual booking from admin
 app.post('/api/admin/bookings/manual', authMiddleware, (req: Request, res: Response) => {
   const data = req.body;
   const db = loadDb();
@@ -1177,6 +1188,8 @@ app.post('/api/admin/bookings/manual', authMiddleware, (req: Request, res: Respo
 
   const newBooking = {
     ...data,
+    roomId: 'zuzmo-kabin',
+    roomName: 'Zuzmo Kabin Vendégház',
     id: bookingId,
     createdAt: new Date().toISOString()
   };
@@ -1186,22 +1199,21 @@ app.post('/api/admin/bookings/manual', authMiddleware, (req: Request, res: Respo
   res.status(201).json({ success: true, booking: newBooking });
 });
 
-// Blocked dates
 app.get('/api/admin/blocked-dates', authMiddleware, (_req: Request, res: Response) => {
   const db = loadDb();
   res.json(db.blockedDates || []);
 });
 
 app.post('/api/admin/blocked-dates', authMiddleware, (req: Request, res: Response) => {
-  const { roomId, startDate, endDate, reason } = req.body;
-  if (!roomId || !startDate || !endDate) {
+  const { startDate, endDate, reason } = req.body;
+  if (!startDate || !endDate) {
     res.status(400).json({ error: 'Hiányzó adatok' });
     return;
   }
   const db = loadDb();
   const newBlock = {
     id: `block-${Date.now()}`,
-    roomId,
+    roomId: 'zuzmo-kabin',
     startDate,
     endDate,
     reason: reason || 'Karbantartás'
@@ -1220,23 +1232,9 @@ app.delete('/api/admin/blocked-dates/:id', authMiddleware, (req: Request, res: R
   res.json({ success: true });
 });
 
-// Rooms CRUD
 app.get('/api/admin/rooms', authMiddleware, (_req: Request, res: Response) => {
   const db = loadDb();
   res.json(db.rooms || []);
-});
-
-app.post('/api/admin/rooms', authMiddleware, (req: Request, res: Response) => {
-  const roomData = req.body;
-  const db = loadDb();
-  const newRoom = {
-    ...roomData,
-    id: `room-${Date.now()}`,
-    active: true
-  };
-  db.rooms.push(newRoom);
-  saveDb(db);
-  res.status(201).json({ success: true, room: newRoom });
 });
 
 app.put('/api/admin/rooms/:id', authMiddleware, (req: Request, res: Response) => {
@@ -1245,7 +1243,7 @@ app.put('/api/admin/rooms/:id', authMiddleware, (req: Request, res: Response) =>
   const db = loadDb();
   const index = db.rooms.findIndex((r: any) => r.id === id);
   if (index === -1) {
-    res.status(404).json({ error: 'Szoba nem található' });
+    res.status(404).json({ error: 'Vendégház nem található' });
     return;
   }
   db.rooms[index] = { ...db.rooms[index], ...updates };
@@ -1253,62 +1251,11 @@ app.put('/api/admin/rooms/:id', authMiddleware, (req: Request, res: Response) =>
   res.json({ success: true, room: db.rooms[index] });
 });
 
-app.delete('/api/admin/rooms/:id', authMiddleware, (req: Request, res: Response) => {
-  const { id } = req.params;
-  const db = loadDb();
-  const index = db.rooms.findIndex((r: any) => r.id === id);
-  if (index === -1) {
-    res.status(404).json({ error: 'Szoba nem található' });
-    return;
-  }
-  // Soft delete by deactivating
-  db.rooms[index].active = false;
-  saveDb(db);
-  res.json({ success: true, message: 'Szoba archiválva' });
-});
-
-// Services CRUD
 app.get('/api/admin/services', authMiddleware, (_req: Request, res: Response) => {
   const db = loadDb();
   res.json(db.services || []);
 });
 
-app.post('/api/admin/services', authMiddleware, (req: Request, res: Response) => {
-  const data = req.body;
-  const db = loadDb();
-  const newService = {
-    ...data,
-    id: `srv-${Date.now()}`,
-    active: true
-  };
-  db.services.push(newService);
-  saveDb(db);
-  res.status(201).json({ success: true, service: newService });
-});
-
-app.put('/api/admin/services/:id', authMiddleware, (req: Request, res: Response) => {
-  const { id } = req.params;
-  const updates = req.body;
-  const db = loadDb();
-  const index = db.services.findIndex((s: any) => s.id === id);
-  if (index === -1) {
-    res.status(404).json({ error: 'Szolgáltatás nem található' });
-    return;
-  }
-  db.services[index] = { ...db.services[index], ...updates };
-  saveDb(db);
-  res.json({ success: true, service: db.services[index] });
-});
-
-app.delete('/api/admin/services/:id', authMiddleware, (req: Request, res: Response) => {
-  const { id } = req.params;
-  const db = loadDb();
-  db.services = db.services.filter((s: any) => s.id !== id);
-  saveDb(db);
-  res.json({ success: true });
-});
-
-// Gallery & Videos
 app.get('/api/admin/gallery', authMiddleware, (_req: Request, res: Response) => {
   const db = loadDb();
   res.json(db.gallery || []);
@@ -1334,7 +1281,6 @@ app.delete('/api/admin/gallery/:id', authMiddleware, (req: Request, res: Respons
   res.json({ success: true });
 });
 
-// Reviews moderation
 app.get('/api/admin/reviews', authMiddleware, (_req: Request, res: Response) => {
   const db = loadDb();
   res.json(db.reviews || []);
@@ -1363,7 +1309,6 @@ app.delete('/api/admin/reviews/:id', authMiddleware, (req: Request, res: Respons
   res.json({ success: true });
 });
 
-// Site Content updates
 app.put('/api/admin/site-content', authMiddleware, (req: Request, res: Response) => {
   const updates = req.body;
   const db = loadDb();
@@ -1372,7 +1317,6 @@ app.put('/api/admin/site-content', authMiddleware, (req: Request, res: Response)
   res.json({ success: true, content: db.siteContent });
 });
 
-// Users management (Owner only)
 app.get('/api/admin/users', authMiddleware, requireOwner, (_req: Request, res: Response) => {
   const db = loadDb();
   const safeUsers = (db.users || []).map((u: any) => ({
@@ -1442,7 +1386,6 @@ app.delete('/api/admin/users/:id', authMiddleware, requireOwner, (req: Request, 
   res.json({ success: true });
 });
 
-// Email templates and logs
 app.get('/api/admin/email-templates', authMiddleware, (_req: Request, res: Response) => {
   const db = loadDb();
   res.json(db.emailTemplates || []);
@@ -1489,7 +1432,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🌲 Zuzmara Vendégház szerver fut a http://0.0.0.0:${PORT} porton`);
+    console.log(`🌲 Zuzmo Kabin Vendégház szerver fut a http://0.0.0.0:${PORT} porton`);
   });
 }
 

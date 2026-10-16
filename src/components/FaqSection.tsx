@@ -14,7 +14,7 @@ export const FaqSection: React.FC = () => {
   const categories = [
     { id: 'all', label: 'Összes Kérdés' },
     { id: 'erkezes', label: 'Érkezés & Megközelítés' },
-    { id: 'wellness', label: 'Wellness & Dézsahasználat' },
+    { id: 'wellness', label: 'Privát Pezsgőfürdő' },
     { id: 'foglalas', label: 'Foglalás & Fizetés' },
     { id: 'hazirend', label: 'Házirend & Kisállatok' },
   ];
@@ -34,10 +34,10 @@ export const FaqSection: React.FC = () => {
             <span>Gyakori Kérdések</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#0f241a]">
-            Minden, Amit Érdemes Tudnod
+            Gyakran Ismételt Kérdések
           </h2>
           <p className="mt-4 text-stone-600 text-base sm:text-lg">
-            Összegyűjtöttük a leggyakoribb kérdéseket az érkezésről, a wellness használatról és a házirendről.
+            Minden hasznos tudnivaló az érkezésről, az önálló bejutásról, a pezsgőfürdőről és a nagymarosi vendégházról.
           </p>
 
           {/* Category Tabs */}

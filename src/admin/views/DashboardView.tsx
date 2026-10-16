@@ -70,7 +70,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigateTab }) =
             Üdvözöljük, {user?.name}!
           </h2>
           <p className="text-stone-200 text-xs sm:text-sm mt-2 leading-relaxed">
-            Itt követheti nyomon a Zuzmara Vendégház aktuális foglalásait, kapacitásait és pénzügyi mutatóit.
+            Itt követheti nyomon a Zuzmo Kabin Vendégház aktuális foglalásait, naptárát és beállításait.
           </p>
         </div>
       </div>

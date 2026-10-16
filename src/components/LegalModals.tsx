@@ -35,16 +35,16 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ activeModal, onClose }
             </h3>
           </div>
           <span className="text-xs text-stone-400 block mb-6">
-            Hatályos: 2026. január 1-től visszavonásig • Zuzmara Vendégház Kft.
+            Hatályos: 2026. január 1-től visszavonásig • Zuzmo Kabin Vendégház
           </span>
 
           <div className="space-y-4 text-stone-600 text-sm leading-relaxed">
             <h4 className="font-bold text-[#0f241a]">1. Az adatkezelő adatai</h4>
             <p>
-              Adatkezelő megnevezése: Zuzmara Vendégház Kft.<br />
-              Székhely: 2628 Zebegény, Vadvirág dűlő 14.<br />
-              NTAK regisztrációs szám: EG23000987<br />
-              E-mail: info@zuzmaravendeghaz.hu • Telefon: +36 30 789 4512
+              Adatkezelő megnevezése: Zuzmo Kabin Vendégház<br />
+              Cím: Nagymaros, Szekér utca<br />
+              NTAK regisztrációs szám: MA19023507<br />
+              E-mail: info@zuzmokabin.hu • Telefon: +36 30 462 1242
             </p>
 
             <h4 className="font-bold text-[#0f241a]">2. A kezelt adatok köre és célja</h4>
@@ -66,7 +66,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ activeModal, onClose }
 
             <h4 className="font-bold text-[#0f241a]">5. Az érintettek jogai</h4>
             <p>
-              Ön bármikor kérheti személyes adatainak helyesbítését, törlését vagy az adatkezelés korlátozását az info@zuzmaravendeghaz.hu e-mail címen.
+              Ön bármikor kérheti személyes adatainak helyesbítését, törlését vagy az adatkezelés korlátozását az info@zuzmokabin.hu e-mail címen.
             </p>
           </div>
 
@@ -101,14 +101,14 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ activeModal, onClose }
             </h3>
           </div>
           <span className="text-xs text-stone-400 block mb-6">
-            Zuzmara Vendégház – Békés pihenés a természet ölelésében
+            Zuzmo Kabin Vendégház – Békés pihenés a Dunakanyar erdőszélén
           </span>
 
           <div className="space-y-4 text-stone-600 text-sm leading-relaxed">
             <h4 className="font-bold text-[#0f241a]">1. Érkezés és elutazás</h4>
             <p>
-              A szálláshely az érkezés napján 15:00 órától foglalható el, és a távozás napján legkésőbb 10:00 óráig kérjük átadni.
-              Az érkezéshez okos kulcsszéf áll rendelkezésre, amelynek kódját 48 órával az érkezés előtt e-mailben és SMS-ben küldjük meg.
+              A vendégház az érkezés napján 15:00 órától foglalható el, és a távozás napján legkésőbb 10:00 óráig kérjük átadni.
+              Az érkezéshez zárható kulcsszéf áll rendelkezésre, amelynek kódját az érkezés előtt e-mailben és SMS-ben küldjük meg.
             </p>
 
             <h4 className="font-bold text-[#0f241a]">2. Foglalási előleg és lemondás</h4>
@@ -117,21 +117,21 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ activeModal, onClose }
               A foglalás az érkezést megelőző 14. napig 100%-ban díjmentesen lemondható vagy módosítható. 14 napon belüli lemondás esetén az előleg nem visszatérítendő.
             </p>
 
-            <h4 className="font-bold text-[#0f241a]">3. Erdei Dézsa és Finn Szauna használata</h4>
+            <h4 className="font-bold text-[#0f241a]">3. Privát pezsgőfürdő és kert használata</h4>
             <p>
-              A dézsafürdő és a szauna kizárólag a házban tartózkodó regisztrált vendégek által vehető igénybe.
-              Kérjük, a víz tisztaságának megőrzése érdekében a használat előtt zuhanyozzanak le. A fatüzelésű kályha biztonsági előírásainak betartása kötelező.
+              A privát pezsgőfürdő és a kerthelyiség kizárólag a házban tartózkodó regisztrált vendégek által vehető igénybe, egész évben.
+              Kérjük, a víz tisztaságának megőrzése érdekében a használat előtt zuhanyozzanak le. A szabadtéri grillezést és bográcsozást kérjük körültekintéssel végezni.
             </p>
 
             <h4 className="font-bold text-[#0f241a]">4. Csendrendelet és természetvédelem</h4>
             <p>
-              A vendégház csendes erdei környezetben fekszik. 22:00 és 08:00 között a hangoskodás, kültéri zenelejátszás szigorúan tilos.
+              A vendégház csendes nagymarosi erdei környezetben fekszik. 22:00 és 08:00 között a hangoskodás, kültéri zenelejátszás szigorúan tilos.
               A ház nem alkalmas legénybúcsúk, lánybúcsúk vagy hangos bulik lebonyolítására.
             </p>
 
             <h4 className="font-bold text-[#0f241a]">5. Dohányzás</h4>
             <p>
-              A faházak belső terében a dohányzás (beleértve az e-cigarettát és hevítő rudakat is) szigorúan tilos! Dohányozni kizárólag a kültéri teraszon, a kijelölt hamutartók mellett engedélyezett.
+              A ház belső tereiben a dohányzás (beleértve az e-cigarettát és hevítő rudakat is) szigorúan tilos! Dohányozni kizárólag a kültéren engedélyezett.
             </p>
           </div>
 

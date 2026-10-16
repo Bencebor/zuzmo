@@ -87,7 +87,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ onBackToSite }) => {
               ❄️
             </div>
             <div>
-              <span className="font-serif font-bold text-base text-white block">Zuzmara Admin</span>
+              <span className="font-serif font-bold text-base text-white block">Zuzmo Kabin Admin</span>
               <span className="text-[10px] tracking-wider uppercase text-[#c5a880] block">
                 {user?.role === 'owner' ? '👑 Tulajdonos' : '✍️ Szerkesztő'}
               </span>
@@ -182,7 +182,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ onBackToSite }) => {
           <div className="relative w-72 bg-[#0f241a] text-white flex flex-col justify-between p-4 z-10 shadow-2xl">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
-                <span className="font-serif font-bold text-base text-white">Zuzmara Admin</span>
+                <span className="font-serif font-bold text-base text-white">Zuzmo Kabin Admin</span>
                 <button
                   onClick={() => setMobileSidebarOpen(false)}
                   className="p-1 rounded-lg text-stone-300 hover:bg-white/10"

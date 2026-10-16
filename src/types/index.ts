@@ -3,9 +3,9 @@ export interface Room {
   name: string;
   tagline: string;
   description: string;
-  capacity: number; // max guests
-  bedrooms: number;
-  bathrooms: number;
+  capacity: number; // max guests (6)
+  bedrooms: number; // 2
+  bathrooms: number; // 1
   sizeM2: number;
   basePricePerNight: number; // in HUF
   weekendPricePerNight: number; // in HUF
@@ -16,14 +16,24 @@ export interface Room {
   active: boolean;
 }
 
+export interface HouseSpace {
+  id: string;
+  name: string;
+  subtitle: string;
+  description: string;
+  bedsInfo: string;
+  images: string[];
+  features: string[];
+}
+
 export interface ServiceItem {
   id: string;
   title: string;
   description: string;
   icon: string; // lucide icon identifier
-  isIncluded: boolean; // included in price or extra
+  isIncluded: boolean;
   extraPrice?: number;
-  category: 'wellness' | 'gasztronomia' | 'kenyelem' | 'aktiv';
+  category: 'wellness' | 'konyha' | 'kenyelem' | 'kert';
   active: boolean;
 }
 
@@ -31,7 +41,7 @@ export interface MediaItem {
   id: string;
   title: string;
   url: string;
-  category: 'kulso' | 'wellness' | 'szobak' | 'hangulat';
+  category: 'kulso' | 'nappali' | 'haloszobak' | 'furdoszoba';
   type: 'image' | 'video';
   thumbnail?: string;
   isCover?: boolean;
@@ -58,13 +68,13 @@ export interface Booking {
   guestPhone: string;
   checkIn: string; // YYYY-MM-DD
   checkOut: string; // YYYY-MM-DD
-  guestsCount: number;
+  guestsCount: number; // up to 6
   nights: number;
   baseTotal: number;
   extrasTotal: number;
   touristTaxTotal: number; // IFA (500 Ft/fő/éj felnőtteknek)
   grandTotal: number;
-  depositRequired: number; // e.g. 30% of grandTotal
+  depositRequired: number; // 30% of grandTotal
   depositPaid: number;
   paymentMethod: 'card' | 'szep_card' | 'bank_transfer';
   paymentStatus: 'pending' | 'deposit_paid' | 'fully_paid' | 'refunded';
@@ -92,6 +102,7 @@ export interface SiteContent {
     badge: string;
     title: string;
     subtitle: string;
+    paragraph2: string;
     coverImage: string;
     announcement: string;
   };
@@ -101,6 +112,8 @@ export interface SiteContent {
     storyParagraph1: string;
     storyParagraph2: string;
     storyParagraph3: string;
+    storyParagraph4: string;
+    closingNote: string;
     image1: string;
     image2: string;
     features: { title: string; desc: string }[];
@@ -111,7 +124,6 @@ export interface SiteContent {
     address: string;
     locationNote: string;
     ntakNumber: string;
-    gpsCoords: string;
   };
   policy: {
     checkInTime: string;
@@ -127,7 +139,7 @@ export interface FaqItem {
   id: string;
   question: string;
   answer: string;
-  category: 'foglalas' | 'wellness' | 'erkezes' | 'hazirend';
+  category: 'erkezes' | 'wellness' | 'hazirend' | 'foglalas';
 }
 
 export interface AdminUser {

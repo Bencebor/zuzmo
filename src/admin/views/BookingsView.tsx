@@ -129,7 +129,7 @@ export const BookingsView: React.FC = () => {
         },
         body: JSON.stringify({
           ...manualForm,
-          roomName: selRoom?.name || 'Zuzmara Faház',
+          roomName: selRoom?.name || 'Zuzmo Kabin Vendégház',
           selectedExtras: []
         })
       });

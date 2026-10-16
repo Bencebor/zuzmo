@@ -3,12 +3,11 @@ import { Star, MessageSquarePlus, CheckCircle, Heart, Quote, X } from 'lucide-re
 import { useSiteData } from '../context/SiteDataContext';
 
 export const ReviewsSection: React.FC = () => {
-  const { reviews, rooms, refreshSiteData } = useSiteData();
+  const { reviews, refreshSiteData } = useSiteData();
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [formData, setFormData] = useState({
     guestName: '',
-    roomName: rooms[0]?.name || 'Erdőzsongás Prémium Faház',
     rating: 5,
     stayDate: '',
     comment: ''
@@ -24,7 +23,10 @@ export const ReviewsSection: React.FC = () => {
       const res = await fetch('/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          ...formData,
+          roomName: 'Zuzmo Kabin Vendégház'
+        })
       });
       const data = await res.json();
       if (!res.ok) {
@@ -37,7 +39,6 @@ export const ReviewsSection: React.FC = () => {
           setSubmitSuccess(false);
           setFormData({
             guestName: '',
-            roomName: rooms[0]?.name || '',
             rating: 5,
             stayDate: '',
             comment: ''
@@ -64,7 +65,7 @@ export const ReviewsSection: React.FC = () => {
               Amit a Vendégeink Mondanak
             </h2>
             <p className="mt-3 text-stone-600 text-base sm:text-lg max-w-xl">
-              Nálunk töltött emlékezetes pillanatok, valódi vendégek őszinte beszámolói a csendről, a kényelemről és a vendégszeretetről.
+              Nálunk töltött emlékezetes pillanatok, valódi vendégek beszámolói a nagymarosi erdőszéli nyugalomról és a privát pezsgőfürdőről.
             </p>
           </div>
 
@@ -78,7 +79,7 @@ export const ReviewsSection: React.FC = () => {
                     <Star key={i} className="w-4 h-4 fill-amber-400" />
                   ))}
                 </div>
-                <div className="text-xs text-stone-500 mt-0.5">140+ hiteles vélemény alapján</div>
+                <div className="text-xs text-stone-500 mt-0.5">Zuzmo Kabin Vendégház</div>
               </div>
             </div>
 
@@ -103,21 +104,21 @@ export const ReviewsSection: React.FC = () => {
             </div>
           </div>
           <div className="text-center p-2">
-            <span className="text-xs text-stone-500 font-medium">Wellness & Dézsa élmény</span>
+            <span className="text-xs text-stone-500 font-medium">Privát Pezsgőfürdő</span>
             <div className="text-xl font-serif font-bold text-[#0f241a] mt-1">4.98 / 5.0</div>
             <div className="w-full bg-stone-300 h-1.5 rounded-full mt-2 overflow-hidden">
               <div className="bg-[#1b4332] h-full w-[99%]" />
             </div>
           </div>
           <div className="text-center p-2">
-            <span className="text-xs text-stone-500 font-medium">Természeti Elhelyezkedés</span>
+            <span className="text-xs text-stone-500 font-medium">Nagymarosi Erdőszél</span>
             <div className="text-xl font-serif font-bold text-[#0f241a] mt-1">5.0 / 5.0</div>
             <div className="w-full bg-stone-300 h-1.5 rounded-full mt-2 overflow-hidden">
               <div className="bg-[#1b4332] h-full w-[100%]" />
             </div>
           </div>
           <div className="text-center p-2">
-            <span className="text-xs text-stone-500 font-medium">Vendéglátás & Segítőkészség</span>
+            <span className="text-xs text-stone-500 font-medium">Önálló Bejutás</span>
             <div className="text-xl font-serif font-bold text-[#0f241a] mt-1">4.97 / 5.0</div>
             <div className="w-full bg-stone-300 h-1.5 rounded-full mt-2 overflow-hidden">
               <div className="bg-[#1b4332] h-full w-[99%]" />
@@ -133,7 +134,6 @@ export const ReviewsSection: React.FC = () => {
               className="bg-white rounded-3xl p-7 shadow-sm hover:shadow-xl border border-stone-200/80 transition-all flex flex-col justify-between relative group"
             >
               <div>
-                {/* Top Row: Stars and Quote icon */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex text-amber-400">
                     {[...Array(rev.rating)].map((_, i) => (
@@ -143,21 +143,19 @@ export const ReviewsSection: React.FC = () => {
                   <Quote className="w-8 h-8 text-[#c5a880]/30 group-hover:text-[#c5a880]/60 transition-colors" />
                 </div>
 
-                {/* Comment Text */}
                 <p className="text-stone-600 text-sm leading-relaxed font-light italic">
                   "{rev.comment}"
                 </p>
               </div>
 
-              {/* Guest Info */}
               <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
                 <div>
                   <h4 className="font-serif font-bold text-[#0f241a] text-sm">{rev.guestName}</h4>
                   <p className="text-[11px] text-stone-400 mt-0.5">
-                    {rev.stayDate} • {rev.roomName}
+                    {rev.stayDate} • Zuzmo Kabin
                   </p>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center text-xs font-bold" title="Ellenőrzött foglalás">
+                <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center text-xs font-bold" title="Ellenőrzött vendég">
                   <Heart className="w-4 h-4 fill-emerald-600 text-emerald-600" />
                 </div>
               </div>
@@ -184,7 +182,7 @@ export const ReviewsSection: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-serif font-bold text-[#0f241a]">Köszönjük az értékelést!</h3>
                 <p className="text-stone-600 text-sm">
-                  Véleményedet sikeresen rögzítettük. Az adminisztrátori moderáció után hamarosan meg fog jelenni a weboldalon.
+                  Véleményedet sikeresen rögzítettük. Az adminisztrátori moderáció után megjelenik a weboldalon.
                 </p>
               </div>
             ) : (
@@ -193,7 +191,7 @@ export const ReviewsSection: React.FC = () => {
                   Írd meg véleményedet!
                 </h3>
                 <p className="text-stone-500 text-xs sm:text-sm mb-6">
-                  Örömmel vesszük a visszajelzésedet a Zuzmara Vendégházban töltött időről.
+                  Oszd meg tapasztalataidat a Zuzmo Kabin Vendégházban töltött időről.
                 </p>
 
                 {errorMsg && (
@@ -210,43 +208,24 @@ export const ReviewsSection: React.FC = () => {
                     <input
                       type="text"
                       required
-                      placeholder="pl. Kovács Katalin & András"
+                      placeholder="pl. Kiss Péter és családja"
                       value={formData.guestName}
                       onChange={(e) => setFormData({ ...formData, guestName: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-[#1b4332] text-sm"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1">
-                        Szállásegység
-                      </label>
-                      <select
-                        value={formData.roomName}
-                        onChange={(e) => setFormData({ ...formData, roomName: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-[#1b4332] text-sm bg-white"
-                      >
-                        {rooms.map((r) => (
-                          <option key={r.id} value={r.name}>
-                            {r.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1">
-                        Tartózkodás ideje
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="pl. 2026. október"
-                        value={formData.stayDate}
-                        onChange={(e) => setFormData({ ...formData, stayDate: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-[#1b4332] text-sm"
-                      />
-                    </div>
+                  <div>
+                    <label className="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1">
+                      Tartózkodás ideje
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="pl. 2026. október"
+                      value={formData.stayDate}
+                      onChange={(e) => setFormData({ ...formData, stayDate: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-[#1b4332] text-sm"
+                    />
                   </div>
 
                   <div>

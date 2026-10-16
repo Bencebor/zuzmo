@@ -80,10 +80,10 @@ export const ContactSection: React.FC = () => {
                       Telefonszám
                     </span>
                     <a
-                      href={`tel:${contact?.phone}`}
+                      href={`tel:${contact?.phone || '+36304621242'}`}
                       className="text-base font-bold text-[#0f241a] hover:text-[#1b4332] transition-colors"
                     >
-                      {contact?.phone || '+36 30 789 4512'}
+                      {contact?.phone || '+36 30 462 1242'}
                     </a>
                     <p className="text-xs text-stone-500 mt-0.5">Mindennap 08:00 – 20:00</p>
                   </div>
@@ -98,10 +98,10 @@ export const ContactSection: React.FC = () => {
                       E-mail cím
                     </span>
                     <a
-                      href={`mailto:${contact?.email}`}
+                      href={`mailto:${contact?.email || 'info@zuzmokabin.hu'}`}
                       className="text-base font-bold text-[#0f241a] hover:text-[#1b4332] transition-colors"
                     >
-                      {contact?.email || 'info@zuzmaravendeghaz.hu'}
+                      {contact?.email || 'info@zuzmokabin.hu'}
                     </a>
                     <p className="text-xs text-stone-500 mt-0.5">Átlagos válaszidő: 2-4 óra</p>
                   </div>
@@ -116,9 +116,9 @@ export const ContactSection: React.FC = () => {
                       Cím & Helyszín
                     </span>
                     <div className="text-base font-bold text-[#0f241a]">
-                      {contact?.address || '2628 Zebegény, Vadvirág dűlő 14.'}
+                      {contact?.address || 'Nagymaros, Szekér utca'}
                     </div>
-                    <p className="text-xs text-stone-500 mt-0.5">{contact?.locationNote}</p>
+                    <p className="text-xs text-stone-500 mt-0.5">{contact?.locationNote || 'A Dunakanyarban, Nagymaroson, a Szekér utcában, az erdő szélén.'}</p>
                   </div>
                 </div>
 
@@ -133,7 +133,7 @@ export const ContactSection: React.FC = () => {
                     <div className="text-sm font-semibold text-[#0f241a]">
                       Check-in: 15:00-tól • Check-out: 10:00-ig
                     </div>
-                    <p className="text-xs text-stone-500 mt-0.5">Kódos okosszéf az önálló érkezéshez</p>
+                    <p className="text-xs text-stone-500 mt-0.5">Zárható kulcsszéf az önálló bejutáshoz</p>
                   </div>
                 </div>
               </div>
@@ -141,7 +141,7 @@ export const ContactSection: React.FC = () => {
               {/* NTAK Badge */}
               <div className="p-3 bg-stone-100 rounded-xl text-xs text-stone-600 font-mono flex items-center gap-2">
                 <Navigation className="w-4 h-4 text-[#1b4332] shrink-0" />
-                <span>{contact?.ntakNumber || 'NTAK: EG23000987 (Magánszálláshely)'}</span>
+                <span>{contact?.ntakNumber || 'NTAK: MA19023507 (Magánszálláshely)'}</span>
               </div>
             </div>
 
@@ -149,9 +149,9 @@ export const ContactSection: React.FC = () => {
             <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-stone-200">
               <div className="relative aspect-[16/9] w-full">
                 <iframe
-                  title="Zuzmara Vendégház Térkép"
+                  title="Zuzmo Kabin Vendégház Térkép"
                   className="w-full h-full border-0"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42858.97746401083!2d18.878953163351934!3d47.79813587849187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476a6552a4ef2d99%3A0x400c4290c1e1490!2sZebeg%C3%A9ny!5e0!3m2!1shu!2shu!4v1700000000000!5m2!1shu!2shu"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2680.0!2d18.96!3d47.785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476a63583569a715%3A0x400c4290c1e1470!2sNagymaros!5e0!3m2!1shu!2shu!4v1700000000000!5m2!1shu!2shu"
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

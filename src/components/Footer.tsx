@@ -24,21 +24,21 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onAd
               </div>
               <div>
                 <span className="text-xl font-serif text-white font-bold block">
-                  Zuzmara <span className="text-[#c5a880] font-normal">Vendégház</span>
+                  Zuzmo <span className="text-[#c5a880] font-normal">Kabin Vendégház</span>
                 </span>
                 <span className="text-[10px] tracking-widest uppercase text-emerald-400 block -mt-1">
-                  Prémium Erdei Wellness
+                  Önálló Erdei Vendégház • Nagymaros
                 </span>
               </div>
             </div>
 
             <p className="text-xs text-stone-400 leading-relaxed font-light">
-              Exkluzív hegyvidéki szálláshely a Börzsöny erdeinek csendjében. Fatüzelésű privát dézsafürdő, panorámás finn szauna és termelői kézműves reggeli.
+              Önálló vendégház és hozzá tartozó kerthelyiség a Dunakanyarban, Nagymaros erdőszélén. Privát pezsgőfürdő, saját kerthelyiség, grillezési lehetőség akár 6 fő számára.
             </p>
 
             <div className="pt-1">
               <span className="inline-block px-3 py-1 bg-white/5 rounded-md text-[11px] font-mono text-[#c5a880] border border-[#c5a880]/20">
-                {contact?.ntakNumber || 'NTAK: EG23000987'}
+                {contact?.ntakNumber || 'NTAK: MA19023507'}
               </span>
             </div>
           </div>
@@ -53,18 +53,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onAd
                 </a>
               </li>
               <li>
-                <a href="#szallasegysegek" className="hover:text-[#c5a880] transition-colors">
-                  Szobák & Faházak
+                <a href="#helyisegek" className="hover:text-[#c5a880] transition-colors">
+                  Ház & Helyiségek
                 </a>
               </li>
               <li>
-                <a href="#szolgaltatasok" className="hover:text-[#c5a880] transition-colors">
-                  Wellness & Szolgáltatások
+                <a href="#felszereltseg" className="hover:text-[#c5a880] transition-colors">
+                  Felszereltség & Szolgáltatások
                 </a>
               </li>
               <li>
                 <a href="#galeria" className="hover:text-[#c5a880] transition-colors">
-                  Fotó- és Videógaléria
+                  Fotógaléria
                 </a>
               </li>
               <li>
@@ -91,18 +91,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onAd
             <ul className="space-y-3 text-xs">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#c5a880] shrink-0 mt-0.5" />
-                <span>{contact?.address || '2628 Zebegény, Vadvirág dűlő 14.'}</span>
+                <span>{contact?.address || 'Nagymaros, Szekér utca'}</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#c5a880] shrink-0" />
-                <a href={`tel:${contact?.phone}`} className="hover:text-white transition-colors">
-                  {contact?.phone || '+36 30 789 4512'}
+                <a href={`tel:${contact?.phone || '+36304621242'}`} className="hover:text-white transition-colors">
+                  {contact?.phone || '+36 30 462 1242'}
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#c5a880] shrink-0" />
-                <a href={`mailto:${contact?.email}`} className="hover:text-white transition-colors">
-                  {contact?.email || 'info@zuzmaravendeghaz.hu'}
+                <a href={`mailto:${contact?.email || 'info@zuzmokabin.hu'}`} className="hover:text-white transition-colors">
+                  {contact?.email || 'info@zuzmokabin.hu'}
                 </a>
               </li>
             </ul>
@@ -153,7 +153,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onAd
         {/* Bottom copyright bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-3">
           <div>
-            © {new Date().getFullYear()} Zuzmara Vendégház. Minden jog fenntartva.
+            © {new Date().getFullYear()} Zuzmo Kabin Vendégház. Minden jog fenntartva.
           </div>
           <div className="flex items-center gap-1 text-stone-400">
             <span>Szeretettel megálmodva a Dunakanyarban</span>

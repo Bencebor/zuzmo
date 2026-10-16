@@ -60,7 +60,7 @@ function MainApp() {
       <div className="min-h-screen bg-[#0f241a] flex flex-col items-center justify-center text-white">
         <div className="w-12 h-12 rounded-full border-2 border-[#c5a880] border-t-transparent animate-spin mb-4" />
         <span className="font-serif text-lg tracking-wide text-[#c5a880]">
-          Zuzmara Vendégház
+          Zuzmo Kabin Vendégház
         </span>
         <span className="text-xs text-stone-400 mt-1">Betöltés folyamatban...</span>
       </div>
