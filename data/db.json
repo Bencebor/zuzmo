@@ -1,0 +1,501 @@
+{
+  "users": [
+    {
+      "id": "usr_owner_1",
+      "username": "admin",
+      "email": "hello@zuzmaravendeghaz.hu",
+      "name": "Kovács Balázs (Tulajdonos)",
+      "role": "owner",
+      "hash": "695ae870875d22d516cf2ef9899376a06970f3a309e6bb1620d230aee4728816f2834ce7e44d77a15de2123b31ce9301b87de6912ea30bcf64c57a02cb491d0a",
+      "salt": "484375b94094430941c1c8b14e53cd5d",
+      "createdAt": "2026-01-10T10:00:00Z"
+    },
+    {
+      "id": "usr_editor_1",
+      "username": "szerkeszto",
+      "email": "szerkeszto@zuzmaravendeghaz.hu",
+      "name": "Varga Dóra (Tartalomfelelős)",
+      "role": "editor",
+      "hash": "eab529155b3f43e6686a678190edab2c8c2b567a94c106299707afc18f2de35b500731709f87463d91cd62116a35bd6e52f3bb43351c733b5143bcb2143d116d",
+      "salt": "ad79cccdb51de00eb2404c623de9e282",
+      "createdAt": "2026-02-01T12:00:00Z"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "room-1",
+      "name": "Erdőzsongás Prémium Faház",
+      "tagline": "Közvetlen erdőszéli luxusház privát dézsával és panoráma szaunával",
+      "description": "Tágas, skandináv stílusú prémium faház hatalmas üvegfalakkal, amelyekből a fenyves erdőre nyílik kilátás. Privát fatüzelésű jakuzzi a teraszon, belső öntöttvas kandalló és teljes kényelem.",
+      "capacity": 4,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "sizeM2": 68,
+      "basePricePerNight": 58000,
+      "weekendPricePerNight": 68000,
+      "minNights": 2,
+      "images": [
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "amenities": [
+        "Privát melegvizes dézsa",
+        "Fatüzelésű kandalló",
+        "Panorámás terasz napozóágyakkal",
+        "Nespresso kávégép & tea válogatás",
+        "Teljesen felszerelt konyha",
+        "Starlink High-Speed Wi-Fi",
+        "Padlófűtés & hűtő-fűtő klíma",
+        "Prémium bio kozmetikumok"
+      ],
+      "featured": true,
+      "active": true
+    },
+    {
+      "id": "room-2",
+      "name": "Zuzmara Panoráma Lodge",
+      "tagline": "Exkluzív páros kuckó beépített hidromasszázs káddal és erdőpanorámával",
+      "description": "Kifejezetten pároknak megálmodott romantikus menedék. Az ágyból és a szabadon álló dizájn kádból is a csillagos égboltot és a lombok lágy ringását élvezhetitek.",
+      "capacity": 2,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "sizeM2": 45,
+      "basePricePerNight": 46000,
+      "weekendPricePerNight": 54000,
+      "minNights": 2,
+      "images": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "amenities": [
+        "Szabadon álló panoráma kád",
+        "King-size prémium matrac",
+        "Elektromos látványkandalló",
+        "Bose Bluetooth hangrendszer",
+        "Nespresso kávégép",
+        "Privát fedett terasz függőággyal",
+        "Fürdőköpeny és papucs bekészítés"
+      ],
+      "featured": true,
+      "active": true
+    },
+    {
+      "id": "room-3",
+      "name": "Hegyvidéki Családi Villa",
+      "tagline": "Két szintes tágas vendégház nagy családoknak vagy baráti társaságoknak",
+      "description": "Három külön hálószobával, hatalmas amerikai konyhás nappalival, tágas kültéri pihenőkerttel és privát szaunaházzal ellátott prémium hegyi otthon.",
+      "capacity": 6,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "sizeM2": 110,
+      "basePricePerNight": 78000,
+      "weekendPricePerNight": 92000,
+      "minNights": 2,
+      "images": [
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "amenities": [
+        "Privát finn szaunaház",
+        "8 személyes fedett étkezőterasz",
+        "Kerti grillező & bográcsozó szett",
+        "2 külön fürdőszoba",
+        "Mosogatógép & mosógép",
+        "Társasjáték sarok & könyvtár",
+        "Borbár válogatás a legjobb helyi pincészetekből"
+      ],
+      "featured": false,
+      "active": true
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-1",
+      "title": "Fatüzelésű Erdei Dézsafürdő",
+      "description": "38-40 fokos parajdi sós forró fürdő a csillagos égbolt alatt, közvetlenül az erdő szélén.",
+      "icon": "Bath",
+      "isIncluded": true,
+      "category": "wellness",
+      "active": true
+    },
+    {
+      "id": "srv-2",
+      "title": "Panorámás Finn Szauna",
+      "description": "Hőkezelt rezgőnyárból épült szaunakabin illóolajokkal és merülő vödörrel a teljes regenerációért.",
+      "icon": "Flame",
+      "isIncluded": true,
+      "category": "wellness",
+      "active": true
+    },
+    {
+      "id": "srv-3",
+      "title": "Kézműves Reggeli Kosár",
+      "description": "Környékbeli kistermelők sajtjai, füstölt finomságai, friss kovászos kenyér, házi lekvárok és friss gyümölcslé az ajtótok elé készítve.",
+      "icon": "Coffee",
+      "isIncluded": false,
+      "extraPrice": 4500,
+      "category": "gasztronomia",
+      "active": true
+    },
+    {
+      "id": "srv-4",
+      "title": "Romantikus Érkezési Csomag",
+      "description": "Hűtött prémium pezsgő, kézműves bonbonválogatás és friss virágcsokor várja a párokat.",
+      "icon": "Heart",
+      "isIncluded": false,
+      "extraPrice": 12900,
+      "category": "gasztronomia",
+      "active": true
+    },
+    {
+      "id": "srv-5",
+      "title": "Zárt Kamerás Parkoló",
+      "description": "Elektromos autó töltési lehetőséggel ellátott (Type 2) biztonságos belső udvari parkolás.",
+      "icon": "Car",
+      "isIncluded": true,
+      "category": "kenyelem",
+      "active": true
+    },
+    {
+      "id": "srv-6",
+      "title": "Erdei Tűzrakó & Grillező",
+      "description": "Előkészített száraz bükkfa, bogrács, nyársak és modern grillfelszerelés a hangulatos estékhez.",
+      "icon": "Sparkles",
+      "isIncluded": true,
+      "category": "aktiv",
+      "active": true
+    },
+    {
+      "id": "srv-7",
+      "title": "Starlink Prémium Wi-Fi",
+      "description": "Stabil, villámgyors műholdas internet, ha a pihenés mellett home office munkára is szükség lenne.",
+      "icon": "Wifi",
+      "isIncluded": true,
+      "category": "kenyelem",
+      "active": true
+    },
+    {
+      "id": "srv-8",
+      "title": "E-Bike Kölcsönzés & Túratérkép",
+      "description": "Prémium elektromos össztelós hegyikerékpárok előre beállított erdei GPS útvonalakkal.",
+      "icon": "Compass",
+      "isIncluded": false,
+      "extraPrice": 9500,
+      "category": "aktiv",
+      "active": true
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gal-1",
+      "title": "Zuzmara Vendégház téli reggelen",
+      "url": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400&q=80",
+      "category": "kulso",
+      "type": "image",
+      "isCover": true
+    },
+    {
+      "id": "gal-2",
+      "title": "Privát gőzölgő dézsafürdő a fenyvesben",
+      "url": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1200&q=80",
+      "category": "wellness",
+      "type": "image"
+    },
+    {
+      "id": "gal-3",
+      "title": "Tágas nappali hatalmas erdei üvegfelületekkel",
+      "url": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+      "category": "szobak",
+      "type": "image"
+    },
+    {
+      "id": "gal-4",
+      "title": "Romantikus kandalló pattogó tűzzel",
+      "url": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80",
+      "category": "hangulat",
+      "type": "image"
+    },
+    {
+      "id": "gal-5",
+      "title": "Finn szauna kilátással a természetre",
+      "url": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80",
+      "category": "wellness",
+      "type": "image"
+    },
+    {
+      "id": "gal-6",
+      "title": "Reggeli a napsütötte erdei teraszon",
+      "url": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1200&q=80",
+      "category": "hangulat",
+      "type": "image"
+    },
+    {
+      "id": "gal-7",
+      "title": "Modern hálószoba prémium pamut ágyneművel",
+      "url": "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80",
+      "category": "szobak",
+      "type": "image"
+    },
+    {
+      "id": "gal-8",
+      "title": "Alkotó csend és madárcsicsergés naplementekor",
+      "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80",
+      "category": "kulso",
+      "type": "image"
+    },
+    {
+      "id": "gal-video-1",
+      "title": "Zuzmara Élményvideó – Drónos bejárás és téli hangulat",
+      "url": "https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4",
+      "category": "hangulat",
+      "type": "video",
+      "thumbnail": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-1",
+      "guestName": "Horváth Ákos & Eszter",
+      "stayDate": "2026. szeptember",
+      "roomName": "Erdőzsongás Prémium Faház",
+      "rating": 5,
+      "comment": "Felejthetetlen 3 napot töltöttünk a Zuzmarában! A dézsából nézni a naplementét a fenyők között, miközben csend vesz körül – szavakkal leírhatatlan. A reggeli kosárban lévő házi sajtok pedig külön dicséretet érdemelnek. Biztosan visszatérünk télen is!",
+      "status": "approved",
+      "isFeatured": true,
+      "createdAt": "2026-09-18T14:20:00Z"
+    },
+    {
+      "id": "rev-2",
+      "guestName": "Dr. Szabó Péter",
+      "stayDate": "2026. augusztus",
+      "roomName": "Zuzmara Panoráma Lodge",
+      "rating": 5,
+      "comment": "A feleségemmel érkeztünk a házassági évfordulónkra. A ház minden apró részlete a luxusról és az ízlésről tanúskodik. Külön kiemelem a szaunát és a patyolattisztaságot. A kommunikáció a házigazdával végtelenül kedves és gördülékeny volt.",
+      "status": "approved",
+      "isFeatured": true,
+      "createdAt": "2026-08-27T09:15:00Z"
+    },
+    {
+      "id": "rev-3",
+      "guestName": "Kerekes Nikolett & barátok",
+      "stayDate": "2026. július",
+      "roomName": "Hegyvidéki Családi Villa",
+      "rating": 5,
+      "comment": "Hatunk kényelmesen elfért a villában. A kerti sütögető és a tágas terasz fantasztikus estéket biztosított. A Starlink net meglepően gyors volt, a konyha pedig mindennel fel volt szerelve, amire csak szükségünk volt.",
+      "status": "approved",
+      "isFeatured": true,
+      "createdAt": "2026-07-14T18:40:00Z"
+    },
+    {
+      "id": "rev-4",
+      "guestName": "Bognár Tamás",
+      "stayDate": "2026. október",
+      "roomName": "Erdőzsongás Prémium Faház",
+      "rating": 5,
+      "comment": "Tökéletes elvonulás a városi pörgésből. A kandalló melege, az erdő illata és a csend azonnal feltöltötte az akkumulátorainkat. Minden szállásadónak így kellene csinálnia!",
+      "status": "approved",
+      "isFeatured": true,
+      "createdAt": "2026-10-02T11:00:00Z"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "ZUZ-2026-8941",
+      "roomId": "room-1",
+      "roomName": "Erdőzsongás Prémium Faház",
+      "guestName": "Nagy Gergely",
+      "guestEmail": "nagy.gergely.demo@example.com",
+      "guestPhone": "+36 30 123 4567",
+      "checkIn": "2026-10-20",
+      "checkOut": "2026-10-23",
+      "guestsCount": 2,
+      "nights": 3,
+      "baseTotal": 174000,
+      "extrasTotal": 27000,
+      "touristTaxTotal": 3000,
+      "grandTotal": 204000,
+      "depositRequired": 61200,
+      "depositPaid": 61200,
+      "paymentMethod": "card",
+      "paymentStatus": "deposit_paid",
+      "status": "confirmed",
+      "selectedExtras": [
+        {
+          "serviceId": "srv-3",
+          "title": "Kézműves Reggeli Kosár",
+          "price": 27000
+        }
+      ],
+      "specialRequests": "Késői érkezés várható 19:00 körül. Kérjük a dézsa előzetes felfűtését, köszönjük!",
+      "createdAt": "2026-10-10T14:22:00Z",
+      "notes": "Vendég telefonon megerősítette az érkezési időt."
+    },
+    {
+      "id": "ZUZ-2026-9210",
+      "roomId": "room-2",
+      "roomName": "Zuzmara Panoráma Lodge",
+      "guestName": "Farkas Lili",
+      "guestEmail": "farkas.lili.demo@example.com",
+      "guestPhone": "+36 70 987 6543",
+      "checkIn": "2026-10-24",
+      "checkOut": "2026-10-26",
+      "guestsCount": 2,
+      "nights": 2,
+      "baseTotal": 108000,
+      "extrasTotal": 12900,
+      "touristTaxTotal": 2000,
+      "grandTotal": 122900,
+      "depositRequired": 36870,
+      "depositPaid": 122900,
+      "paymentMethod": "szep_card",
+      "paymentStatus": "fully_paid",
+      "status": "confirmed",
+      "selectedExtras": [
+        {
+          "serviceId": "srv-4",
+          "title": "Romantikus Érkezési Csomag",
+          "price": 12900
+        }
+      ],
+      "specialRequests": "Házassági évfordulós meglepetés.",
+      "createdAt": "2026-10-12T16:05:00Z",
+      "notes": "OTP SZÉP Kártyával teljesen kifizetve."
+    }
+  ],
+  "blockedDates": [
+    {
+      "id": "block-1",
+      "roomId": "room-3",
+      "startDate": "2026-10-28",
+      "endDate": "2026-10-31",
+      "reason": "Éves szauna karbantartás és fafelület ápolás"
+    }
+  ],
+  "siteContent": {
+    "hero": {
+      "badge": "✨ Prémium Természetközeli Vendégház & Wellness",
+      "title": "Ahol a csend és a luxus találkozik a Börzsöny fenyveseiben",
+      "subtitle": "Zuzmara Vendégház – exkluzív erdei faházak privát dézsafürdővel, panorámás finn szaunával és kényeztető helyi ízekkel a festői Zebegény erdejében.",
+      "coverImage": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=85",
+      "announcement": "🌲 Téli előfoglalási akció: 3 éjszaka feletti foglalás esetén ajándék kézműves reggeli kosár!"
+    },
+    "about": {
+      "title": "A Zuzmara Vendégház Története",
+      "subtitle": "Egy álom, amely a természet iránti mély tiszteletből született",
+      "storyParagraph1": "A Zuzmara Vendégház gondolata egy téli erdei túránk alkalmával fogant meg bennünk, amikor a fenyőfák ágain csillogó kristálytiszta zuzmara látványa és a mindent betöltő mély csend megállította az időt. Elhatároztuk, hogy létrehozunk egy olyan helyet, ahol a prémium elegancia és a vadregényes természet tökéletes harmóniában él együtt.",
+      "storyParagraph2": "A faházak építése során a természetes, fenntartható anyagokra és a skandináv letisztultságra fókuszáltunk. Minden rönk és deszka gondos kezek munkája, a hatalmas üvegfelületek pedig azt az érzést keltik, mintha a vendég a lombok között pihenne. Nincsenek szomszédok, nincsen zaj, csak a szél susogása és a pattogó kandallótűz.",
+      "storyParagraph3": "Nálunk a vendéglátás nem szolgáltatás, hanem szívből jövő gondoskodás: a fűtött sós vizes dézsától a környékbeli őstermelők legfinomabb reggelijéig minden azért van, hogy ti újra egymásra és önmagatokra találjatok.",
+      "image1": "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1000&q=80",
+      "image2": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1000&q=80",
+      "features": [
+        {
+          "title": "100% Privát Szféra",
+          "desc": "Nincs közös recepció vagy átmenő forgalom. A birtok és a wellness eszközök kizárólag a tiétek."
+        },
+        {
+          "title": "Egész Éves Wellness",
+          "desc": "Fatüzelésű forró sós dézsafürdő és üvegfalú finn szauna akár hófúvásban is."
+        },
+        {
+          "title": "Helyi Ízek & Gondoskodás",
+          "desc": "A Dunakanyar és a Börzsöny legkiválóbb kézműves termelőinek finomságai közvetlenül a házatokhoz szállítva."
+        },
+        {
+          "title": "Öko-Tudatos Luxus",
+          "desc": "Megújuló energiák, prémium hőszigetelés és natúr fából készült építészeti megoldások."
+        }
+      ]
+    },
+    "contact": {
+      "phone": "+36 30 789 4512",
+      "email": "info@zuzmaravendeghaz.hu",
+      "address": "2628 Zebegény, Vadvirág dűlő 14.",
+      "locationNote": "Zebegény központjától 4 perces festői erdei autóúton, jól járható szilárd burkolatú hegyi úton közelíthető meg. Télen is karbantartott út!",
+      "ntakNumber": "NTAK regisztrációs szám: EG23000987 (Magánszálláshely)",
+      "gpsCoords": "47.7981, 18.9125"
+    },
+    "policy": {
+      "checkInTime": "15:00 - 20:00 (Kódos okos kulcsszéffel rugalmas érkezés)",
+      "checkOutTime": "10:00-ig",
+      "quietHours": "22:00 - 08:00 között kérjük a természet és a szomszédos erdő csendjének tiszteletben tartását.",
+      "cancellationDays": 14,
+      "depositPercentage": 30,
+      "touristTaxPerPersonPerNight": 500
+    }
+  },
+  "faqs": [
+    {
+      "id": "faq-1",
+      "category": "erkezes",
+      "question": "Mikor lehet elfoglalni és mikor kell elhagyni a szállást?",
+      "answer": "Az érkezés napján 15:00 órától lehet bejelentkezni. Az önálló, kontaktmentes érkezést biztonsági kódos okosszéf biztosítja, így akár késő este is rugalmasan érkezhettek. A távozás napján 10:00 óráig kérjük a szállás elhagyását."
+    },
+    {
+      "id": "faq-2",
+      "category": "wellness",
+      "question": "Hogyan működik a dézsa és a szauna használata? Van-e külön díja?",
+      "answer": "A dézsafürdő és a panoráma szauna használata TELJESEN INGYENES és korlátlan a tartózkodásotok alatt! A dézsát érkezésetekre kérésre előre felfűtjük tiszta parajdi sós vízzel, a helyszínen pedig bőségesen találtok bekészített száraz bükkfát a további fűtéshez."
+    },
+    {
+      "id": "faq-3",
+      "category": "foglalas",
+      "question": "Milyen fizetési módok érhetők el? Elfogadtok SZÉP Kártyát?",
+      "answer": "Igen! Elfogadunk OTP, MBH és K&H SZÉP Kártyát, bankkártyás online fizetést (Mastercard, Visa), valamint közvetlen azonnali banki átutalást. A foglalás megerősítéséhez 30% előleg szükséges, a fennmaradó összeget érkezés előtt vagy a helyszínen rendezhetitek."
+    },
+    {
+      "id": "faq-4",
+      "category": "foglalas",
+      "question": "Milyen lemondási feltételek érvényesek?",
+      "answer": "Az érkezést megelőző 14. napig a foglalás teljesen díjmentesen lemondható vagy módosítható egy későbbi szabad időpontra, és a befizetett előleget 100%-ban visszatérítjük. 14 napon belüli lemondás esetén az előleg a vendégházat illeti."
+    },
+    {
+      "id": "faq-5",
+      "category": "hazirend",
+      "question": "Lehet-e házi kedvencet hozni a vendégházba?",
+      "answer": "A Zuzmara Panoráma Lodge és Erdőzsongás faházunk hipoallergén környezet biztosítása érdekében kisállat-mentes, azonban a Hegyvidéki Családi Villánkba előzetes egyeztetés alapján jól nevelt, szobatiszta kistestű kutyusokat szeretettel fogadunk (3.000 Ft/éj felár ellenében)."
+    },
+    {
+      "id": "faq-6",
+      "category": "erkezes",
+      "question": "Milyen úton közelíthető meg a vendégház télen vagy esős időben?",
+      "answer": "A vendégházhoz vezető hegyi út aszfaltozott és szilárd burkolatú, télen is rendszeresen takarított és sózott. Normál személyautóval bármely évszakban könnyedén és biztonságosan járható."
+    }
+  ],
+  "emailTemplates": [
+    {
+      "id": "tpl-1",
+      "name": "Foglalás Visszaigazolás",
+      "subject": "Sikeres foglalás – Zuzmara Vendégház ({{bookingId}})",
+      "body": "Kedves {{guestName}}!\n\nÖrömmel értesítünk, hogy a foglalásodat a Zuzmara Vendégházban sikeresen rögzítettük!\n\nSzállásegység: {{roomName}}\nÉrkezés: {{checkIn}}\nTávozás: {{checkOut}}\nVendégek száma: {{guestsCount}} fő\nVégösszeg: {{grandTotal}} Ft\nBefizetett előleg: {{depositPaid}} Ft\n\nÉrkezés előtt 2 nappal elküldjük a kulcsszéf nyitókódját és az erdei útvonaltervet.\n\nSzeretettel várunk Benneteket!\nZuzmara Vendégház Csapata"
+    },
+    {
+      "id": "tpl-2",
+      "name": "Előleg Bekérő",
+      "subject": "Előlegbekérő – Zuzmara Vendégház ({{bookingId}})",
+      "body": "Kedves {{guestName}}!\n\nKöszönjük a foglalási igényt. A lefoglalt időszak véglegesítéséhez kérjük az alábbi előleg átutalását 48 órán belül:\n\nÖsszeg: {{depositRequired}} Ft\nBankszámlaszám: 11773000-12345678-00000000 (OTP Bank)\nKedvezményezett: Zuzmara Vendégház Kft.\nKözlemény: {{bookingId}}\n\nÜdvözlettel,\nZuzmara Vendégház"
+    }
+  ],
+  "emailLogs": [
+    {
+      "id": "log-1",
+      "to": "nagy.gergely.demo@example.com",
+      "subject": "Sikeres foglalás – Zuzmara Vendégház (ZUZ-2026-8941)",
+      "bookingId": "ZUZ-2026-8941",
+      "sentAt": "2026-10-10T14:22:05Z",
+      "type": "booking_confirmed",
+      "contentPreview": "Kedves Nagy Gergely! Örömmel értesítünk, hogy a foglalásodat sikeresen rögzítettük..."
+    }
+  ],
+  "settings": {
+    "integrations": {
+      "iCalSyncEnabled": true,
+      "lastSyncAt": "2026-10-14T07:00:00Z",
+      "onlinePaymentGateway": "SimplePay & OTP SZÉP Kártya Live Sandbox",
+      "status": "online"
+    }
+  }
+}

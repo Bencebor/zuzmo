@@ -1,0 +1,6 @@
+{
+  "name": "Zuzmara Vendégház",
+  "description": "Prémium erdei vendégház és wellness szálláshely – exkluzív pihenés, online foglalás, jakuzzi, szauna és természetközeli élmények.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
