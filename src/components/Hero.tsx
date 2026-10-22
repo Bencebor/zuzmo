@@ -24,12 +24,12 @@ export const Hero: React.FC = () => {
     <section className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 overflow-hidden">
       {/* Background Image with Dark Pine Tint Gradient */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={formatImgUrl(heroImage)}
-          alt="Zuzmo Kabin Vendégház Nagymaros"
-          className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-10000"
-          referrerPolicy="no-referrer"
-          onError={(e) => handleImageError(e, 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=85')}
+        <video autoPlay muted loop playsInline
+          src="/hero-drone-web.mov"
+          poster={formatImgUrl(heroImage)}
+          className="w-full h-full object-cover object-center scale-110 blur-[2px] transition-transform duration-10000"
+          preload="auto"
+          
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0f241a] via-[#0f241a]/65 to-[#0f241a]/45" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#0f241a]/30 to-[#0f241a]/80" />
@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
         {/* Top Highlight Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1b4332]/80 border border-[#c5a880]/40 text-[#c5a880] text-xs sm:text-sm font-medium backdrop-blur-md mb-6 shadow-xl animate-fade-in">
           <Sparkles className="w-4 h-4 text-[#d4af37]" />
-          <span>{content?.hero?.badge || '✨ Önálló Vendégház Nagymaroson, Akár 6 Fő Részére'}</span>
+          <span>🎄 Karácsonyi kedvezmény</span>
         </div>
 
         {/* Main Headline */}
